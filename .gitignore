@@ -1,0 +1,14 @@
+node_modules/
+backend/node_modules/
+dist/
+.DS_Store
+*.log
+.env
+backend/.env
+config/app.public.json
+android/app/build/
+android/.gradle/
+android/keystore/
+android/keystore.properties
+ios/App/build/
+_BACKUP_XCODE_ERREURS/

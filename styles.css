@@ -1,0 +1,598 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background: #000000;
+  color: #e2e8f0;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-image: radial-gradient(circle at 20% 15%, rgba(56, 189, 248, 0.12), transparent 30%);
+}
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  pointer-events: none;
+}
+
+.splash-logo {
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #38bdf8;
+  text-transform: uppercase;
+  animation: logoGrowFade 1.6s ease-out forwards;
+}
+
+.splash-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+@keyframes logoGrowFade {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  35% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.app {
+  width: min(100%, 430px);
+  max-width: 430px;
+  margin: 0;
+  padding: 1.5rem;
+  background: rgba(2, 6, 23, 0.92);
+  border-radius: 16px;
+  border: 1px solid #1e293b;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.01em;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-icon-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+
+.profile-hero {
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: 0 auto 0.6rem;
+  border-radius: 1.4rem;
+  border: 1px solid #1f2937;
+  background: #020617;
+  display: grid;
+  place-items: center;
+}
+
+.profile-avatar i {
+  font-size: 3rem;
+  color: #93c5fd;
+}
+
+.profile-hero h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.profile-chips {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-top: 0.55rem;
+}
+
+.profile-chip {
+  background: #0b1220;
+  border: 1px solid #1e3a8a;
+  color: #bfdbfe;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.profile-chip--green {
+  border-color: #166534;
+  color: #86efac;
+}
+
+.profile-stats-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.profile-stat-card {
+  text-align: center;
+}
+
+.profile-label {
+  display: block;
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+}
+
+.profile-stat-value {
+  color: #38bdf8;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.entry-screen {
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.entry-logo-btn {
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #0b1220, #050a16);
+  padding: 0.65rem 0.65rem 0.55rem;
+  min-width: 108px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.entry-logo-btn span {
+  color: #e2e8f0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.entry-logo-btn:hover {
+  transform: translateY(-2px);
+  border-color: #334155;
+}
+
+.entry-logo-btn[data-app="tiktok"]:hover {
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.35), 0 12px 26px rgba(34, 211, 238, 0.18);
+}
+
+.entry-logo-btn[data-app="instagram"]:hover {
+  box-shadow: 0 0 0 1px rgba(217, 70, 239, 0.35), 0 12px 26px rgba(217, 70, 239, 0.18);
+}
+
+.entry-logo-btn[data-app="youtube"]:hover {
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.35), 0 12px 26px rgba(248, 113, 113, 0.18);
+}
+
+.settings-screen {
+  animation: fadeIn 0.22s ease;
+}
+
+.connect-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.connect-card {
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 0.6rem 0.35rem;
+  background: linear-gradient(180deg, #0b1220, #050a16);
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.connect-card:hover {
+  transform: translateY(-1px);
+  border-color: #334155;
+}
+
+.connect-card small {
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+.connect-card.connected {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.2), 0 0 18px rgba(34, 197, 94, 0.18);
+}
+
+.connect-card.connected small {
+  color: #86efac;
+}
+
+.brand-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: #020617;
+  border: 1px solid #1f2937;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.connect-card .brand-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+}
+
+.brand-icon i {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.connect-card .brand-icon i {
+  font-size: 1.55rem;
+}
+
+.brand-icon--tiktok i {
+  color: #e2e8f0;
+  text-shadow: -1px 0 #22d3ee, 1px 0 #f43f5e;
+}
+
+.brand-icon--instagram i {
+  color: #f472b6;
+}
+
+.brand-icon--youtube i {
+  color: #ef4444;
+}
+
+.description {
+  color: #cbd5e1;
+}
+
+.auth-form {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.auth-form label {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.58rem 0.62rem;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  background: #0b1220;
+  color: #e2e8f0;
+  margin-bottom: 0.2rem;
+}
+
+.auth-info {
+  margin: 0.55rem 0 0;
+  color: #93c5fd;
+  font-size: 0.88rem;
+}
+
+.morning-note {
+  color: #93c5fd;
+  margin-top: 0.3rem;
+}
+
+.app-selector {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.app-tab {
+  background: #0b1220;
+  color: #e2e8f0;
+  border: 2px solid #334155;
+  border-radius: 12px;
+  padding: 0.55rem 0.7rem;
+  min-width: 132px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.app-tab img {
+  width: 74px;
+  height: 74px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.app-tab span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.app-tab.active {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25);
+}
+
+.selected-card {
+  margin-top: 1rem;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 1rem;
+  background: linear-gradient(180deg, #0a1220, #070d19);
+}
+
+.selected-card h2 {
+  margin-top: 0;
+}
+
+.premium-card {
+  border-color: #0f3b4f;
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.14);
+}
+
+.premium-text {
+  margin: 0.35rem 0;
+  color: #bfdbfe;
+  font-size: 0.9rem;
+}
+
+.premium-sep {
+  border: 0;
+  border-top: 1px solid #1f2937;
+  margin: 0.8rem 0;
+}
+
+.challenge-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.challenge-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+  align-items: center;
+  background: #0b1220;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 0.5rem 0.6rem;
+}
+
+.challenge-item strong {
+  font-size: 0.86rem;
+}
+
+.challenge-item span {
+  font-size: 0.82rem;
+  color: #93c5fd;
+  text-align: right;
+}
+
+.reward-progress-wrap {
+  height: 10px;
+  border-radius: 999px;
+  background: #0b1220;
+  border: 1px solid #1f2937;
+  overflow: hidden;
+}
+
+.reward-progress-bar {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #38bdf8);
+  transition: width 0.3s ease;
+}
+
+.badge-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badge-chip {
+  background: #172554;
+  color: #dbeafe;
+  border: 1px solid #1d4ed8;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.badge-chip--empty {
+  background: #0b1220;
+  color: #94a3b8;
+  border-color: #334155;
+}
+
+.history-detail-head,
+.history-row {
+  display: grid;
+  grid-template-columns: 1.45fr 0.55fr 1.5fr 0.9fr;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.history-app-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.history-app-btn {
+  background: #111827;
+  color: #e2e8f0;
+}
+
+.history-app-btn.active {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+.history-summary {
+  margin: 0 0 0.55rem;
+  color: #93c5fd;
+  font-size: 0.92rem;
+}
+
+.history-detail-head {
+  color: #93c5fd;
+  font-weight: 700;
+  font-size: 0.86rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+.history-body {
+  margin-top: 0.55rem;
+}
+
+.history-row {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid #111827;
+  font-size: 0.95rem;
+}
+
+.history-empty {
+  color: #9ca3af;
+  margin: 0.4rem 0 0;
+}
+
+.limit-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0.8rem 0;
+}
+
+.limit-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.6rem;
+}
+
+.limit-lock-info {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #7dd3fc;
+}
+
+.android-protection-info {
+  margin: -0.35rem 0 0.5rem;
+  color: #93c5fd;
+  font-size: 0.86rem;
+}
+
+.controls,
+.status,
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.1rem 0;
+  flex-wrap: wrap;
+}
+
+input[type="number"] {
+  width: 90px;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #64748b;
+  border-radius: 6px;
+  background: #0b1220;
+  color: #e2e8f0;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  background: linear-gradient(180deg, #38bdf8, #0ea5e9);
+  color: #0f172a;
+  font-weight: 600;
+  transition: transform 0.16s ease, opacity 0.16s ease, box-shadow 0.16s ease;
+}
+
+button:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(14, 165, 233, 0.35);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+  transform: none;
+}
+
+.lock-message {
+  margin-top: 1rem;
+  color: #fca5a5;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

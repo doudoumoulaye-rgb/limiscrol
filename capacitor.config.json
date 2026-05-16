@@ -1,0 +1,21 @@
+{
+  "appId": "com.limitscroll.app",
+  "appName": "ModérScroll",
+  "webDir": "dist",
+  "android": {
+    "backgroundColor": "#000000"
+  },
+  "ios": {
+    "backgroundColor": "#000000"
+  },
+  "revenueCat": {
+    "entitlementId": "pro",
+    "offeringId": "default",
+    "androidApiKey": "",
+    "iosApiKey": "",
+    "products": {
+      "monthly5": "moder_scroll_premium",
+      "trial14": "moder_scroll_premium"
+    }
+  }
+}

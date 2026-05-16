@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ModérScroll</string>
+    <string name="title_activity_main">ModérScroll</string>
+    <string name="package_name">com.limitscroll.app</string>
+    <string name="custom_url_scheme">com.limitscroll.app</string>
+    <string name="accessibility_service_description">Suit ton usage et peut fermer TikTok, Instagram Reels ou YouTube Shorts lorsque la limite fixee dans ModérScroll est atteinte. Indispensable pour le blocage.</string>
+    <string name="accessibility_service_label">ModérScroll - Reels/Shorts</string>
+</resources>

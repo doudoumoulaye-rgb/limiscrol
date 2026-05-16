@@ -1,0 +1,16 @@
+{
+  "entitlementId": "pro",
+  "offeringId": "default",
+  "androidApiKey": "",
+  "iosApiKey": "",
+  "googlePlay": {
+    "packageName": "com.limitscroll.app",
+    "subscriptionProductId": "moder_scroll_premium",
+    "basePlanMonthly": "monthly",
+    "basePlanTrial": "monthly-trial-14d"
+  },
+  "products": {
+    "monthly5": "moder_scroll_premium",
+    "trial14": "moder_scroll_premium"
+  }
+}
