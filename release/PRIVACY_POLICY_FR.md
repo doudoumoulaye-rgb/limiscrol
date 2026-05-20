@@ -1,22 +1,29 @@
-# Politique de confidentialité - LimitScroll
+# Politique de confidentialité - ModérScroll
 
-Dernière mise à jour: 13 mars 2026
+Dernière mise à jour: mars 2026
+
+Version web (URL Play Store) : publier `docs/privacy.html` (ex. GitHub Pages).
 
 ## 1. Introduction
 
-LimitScroll respecte ta vie privée. Cette politique explique quelles données sont utilisées dans l'application et dans quel but.
+ModérScroll respecte ta vie privée. Cette politique explique quelles données sont utilisées dans l'application et dans quel but.
 
 ## 2. Données traitées
 
-L'application peut stocker localement sur ton appareil:
-- Tes préférences de limites
-- Ton état de progression (crédits, défis, statistiques)
+L'application peut stocker localement sur ton appareil et, si tu es connecté, synchroniser via Internet :
+- Tes préférences de limites (TikTok, Instagram, YouTube)
+- Ton état de progression (crédits gratuits, défis, statistiques)
 - Tes choix d'onboarding
-- Les informations de profil que tu saisis (si utilisées)
+- Les informations de profil que tu saisis (nom, e-mail)
+- Des identifiants de compte via notre prestataire d'authentification (ex. Supabase)
 
 ## 3. Paiement
 
-Les informations de paiement sont gérées via les mécanismes de la plateforme (store). LimitScroll ne stocke pas les données bancaires complètes sur ses serveurs.
+Les abonnements sont gérés par Google Play. ModérScroll ne stocke pas les données bancaires complètes sur ses serveurs.
+
+## 3bis. Service d'accessibilité
+
+Si tu l'actives, le service sert uniquement à appliquer tes limites sur les apps vidéo concernées. Tu peux le désactiver dans les réglages Android.
 
 ## 4. Utilisation des données
 

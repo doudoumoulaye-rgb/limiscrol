@@ -1,57 +1,77 @@
-# Textes Store FR (copier-coller)
+# Fiche Play Store — ModérScroll (textes prêts à coller)
 
-## Nom de l'application
+Remplace `support@limitscroll.app` par ton email réel si besoin.
 
-LimitScroll
+---
 
-## Accroche courte
+## Nom de l’application
 
-Reprends le contrôle de ton temps de scroll.
+**ModérScroll**
 
-## Description courte (Google Play)
+---
 
-Réduis ton scroll avec des limites intelligentes, des crédits gratuits et des défis quotidiens.
+## Description courte (max 80 caractères)
 
-## Sous-titre (App Store)
+Limite TikTok, Instagram Reels et YouTube Shorts. Reprends le contrôle.
 
-Réduis ton scroll, garde ton focus.
+*(77 caractères)*
 
-## Description longue
+---
 
-LimitScroll t'aide à reprendre le contrôle de ton temps passé sur les vidéos courtes.
+## Description complète
 
-Avec un onboarding simple, tu définis tes objectifs et tu démarres immédiatement avec un crédit gratuit de vidéos.
+ModérScroll t’aide à réduire le scroll infini sur TikTok, Instagram Reels et YouTube Shorts.
 
-Fonctionnalités principales:
-- 2000 vidéos gratuites au premier usage
-- Limites personnalisables pour TikTok, Instagram et YouTube
-- Verrouillage des limites pendant 24h après confirmation
-- Statistiques claires sur ta consommation
-- Défis quotidiens et suivi de progression
-- Passage en illimité avec abonnement
+**Fonctionnalités :**
+• Fixe une limite quotidienne par application  
+• Compte les vues et te prévient quand tu approches de ta limite  
+• Verrouille ta limite pour 24 h quand tu es prêt  
+• Statistiques et défis pour rester motivé  
+• Crédits gratuits à l’installation pour découvrir l’app  
+• Connexion par email ou Google pour sauvegarder ta progression  
 
-Pourquoi LimitScroll:
-- Moins de distraction
-- Plus de focus
-- Meilleure discipline numérique
-- Interface simple et motivante
+**Premium (abonnement optionnel) :**  
+Accès illimité après tes crédits gratuits — 3 CHF / mois via Google Play (selon disponibilité dans ton pays).
 
-Commence aujourd'hui et transforme tes habitudes de scroll.
+ModérScroll utilise un service d’accessibilité **que tu actives volontairement** pour détecter l’usage des apps vidéo et appliquer tes limites. Aucune revente de tes données personnelles.
 
-## Nouveautés (Release notes v1)
+**Support :** support@limitscroll.app
 
-- Lancement officiel de LimitScroll
-- Onboarding en 4 questions
-- Système de 2000 crédits gratuits
-- Blocage automatique à 0 crédit
-- Accès illimité après abonnement
-- Suivi des stats et défis intégrés
-
-## Mots-clés suggérés
-
-scroll,focus,productivité,digital detox,réseaux sociaux,limite tiktok,shorts,reels
+---
 
 ## Catégorie suggérée
 
-- Productivité
+**Santé et bien-être**  
+*(alternative : Productivité)*
 
+---
+
+## Tags / mots-clés (si le champ existe)
+
+limites, scroll, TikTok, Instagram, YouTube Shorts, bien-être, temps d’écran, digital wellbeing
+
+---
+
+## Visuels à préparer
+
+| Asset | Taille | Fichier projet (indicatif) |
+|-------|--------|----------------------------|
+| Icône | 512×512 | `assets/icon-moder-scroll-1024.png` |
+| Bannière | 1024×500 | à créer ou adapter `assets/splash-brand.png` |
+| Captures téléphone | min. 2, idéal 4–8 | screenshots depuis build test interne |
+
+**Conseil captures :** accueil (choix TikTok/Instagram/YouTube), roue de limite, profil, écran stats ou défis.
+
+---
+
+## URL politique de confidentialité
+
+À remplir après mise en ligne de `docs/privacy.html` (GitHub Pages ou autre).
+
+Exemple : `https://TON_COMPTE.github.io/TON_REPO/privacy.html`
+
+---
+
+## Contact développeur
+
+Email affiché sur la fiche : **support@limitscroll.app** (ou ton email)

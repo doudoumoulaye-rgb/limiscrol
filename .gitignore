@@ -6,6 +6,14 @@ dist/
 .env
 backend/.env
 config/app.public.json
+release/keystore-credentials.txt
+release/DEUX-CLES-GOOGLE-PLAY.txt
+release/*.aab*
+**/ModerScroll-keystore-backup/
+*.keystore
+# Clés JSON compte de service Google (jamais sur GitHub)
+moderscroll-*.json
+*gserviceaccount*.json
 android/app/build/
 android/.gradle/
 android/keystore/
