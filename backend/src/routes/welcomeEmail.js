@@ -15,20 +15,22 @@ function displayNameFromUser(user) {
 }
 
 router.post("/send-welcome-email", requireAuth, async (req, res) => {
+  let email = "";
   try {
     const user = req.user;
-    const email = String(user?.email || "").trim().toLowerCase();
+    email = String(user?.email || "").trim().toLowerCase();
     if (!email) {
       return res.json({ sent: false, skipped: true, reason: "no_email" });
     }
 
     const meta = user.user_metadata || {};
-    if (meta.welcome_email_sent === true) {
-      return res.json({ sent: false, skipped: true, reason: "already_sent" });
+    const force = Boolean(req.body?.force);
+    if (meta.welcome_email_sent === true && !force) {
+      return res.json({ sent: false, skipped: true, reason: "already_sent", email });
     }
 
     const locale = String(req.body?.locale || "fr").toLowerCase() === "en" ? "en" : "fr";
-    await sendWelcomeEmailViaResend({
+    const resendPayload = await sendWelcomeEmailViaResend({
       to: email,
       displayName: displayNameFromUser(user),
       locale,
@@ -47,19 +49,25 @@ router.post("/send-welcome-email", requireAuth, async (req, res) => {
       }
     }
 
-    return res.json({ sent: true, email });
+    return res.json({
+      sent: true,
+      email,
+      resendId: resendPayload?.id || null,
+    });
   } catch (error) {
     if (error.code === "RESEND_NOT_CONFIGURED") {
       return res.status(503).json({ sent: false, error: "welcome_email_not_configured" });
     }
-    console.error("[welcome-email]", error);
-    if (process.env.NODE_ENV === "production") {
-      return res.status(500).json({ sent: false, error: "welcome_email_failed" });
-    }
+    console.error("[welcome-email]", email, error.message, error.details || "");
     return res.status(500).json({
       sent: false,
       error: "welcome_email_failed",
-      details: error.message,
+      reason: error.code || "unknown",
+      hint:
+        error.code === "RESEND_SEND_FAILED"
+          ? "Vérifie que moder-scroll.com est Verified sur Resend et que WELCOME_EMAIL_FROM utilise ce domaine."
+          : undefined,
+      details: process.env.NODE_ENV === "production" ? undefined : error.message,
     });
   }
 });

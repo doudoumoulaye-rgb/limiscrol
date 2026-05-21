@@ -4546,27 +4546,65 @@
           );
         }
 
-        async function queueWelcomeEmailAfterAuth() {
+        async function queueWelcomeEmailAfterAuth(options = {}) {
           const token = getBackendAccessToken();
-          if (!token || !navigator.onLine) return;
-          try {
-            await apiRequest(
+          if (!token || !navigator.onLine) return { ok: false, reason: "no_token_or_offline" };
+          const fr = resolveUiLocale() === "fr";
+          const attempt = async (force) => {
+            return apiRequest(
               "/api/auth/send-welcome-email",
               {
                 method: "POST",
-                body: JSON.stringify({ locale: resolveUiLocale() }),
+                body: JSON.stringify({ locale: resolveUiLocale(), force: Boolean(force) }),
               },
               true
             );
+          };
+          try {
+            let result = await attempt(options.force);
+            if (result?.skipped && result?.reason === "already_sent" && options.force) {
+              result = await attempt(true);
+            }
+            if (result?.sent) {
+              if (options.showToast !== false) {
+                showAppToast(
+                  fr ? "E-mail envoyé" : "Email sent",
+                  fr
+                    ? "Bienvenue dans ModérScroll — vérifie ta boîte mail (et les spams)."
+                    : "Welcome to ModérScroll — check your inbox (and spam).",
+                  "success"
+                );
+              }
+              return { ok: true, sent: true };
+            }
+            if (result?.skipped && result?.reason === "already_sent") {
+              console.info("[ModérScroll] E-mail bienvenue déjà envoyé pour ce compte.");
+              return { ok: true, skipped: true, reason: "already_sent" };
+            }
+            return { ok: false, result };
           } catch (err) {
             const msg = String(err?.message || err);
             console.warn("[ModérScroll] E-mail de bienvenue:", msg, "API:", BACKEND_API_BASE);
-            if (/api-404|Cannot POST|welcome_email_not_configured|api-503/i.test(msg)) {
-              console.warn(
-                "[ModérScroll] Déploie le backend sur Render (route /api/auth/send-welcome-email) + RESEND_API_KEY."
+            if (options.showToast !== false && /welcome_email_failed|resend|api-500/i.test(msg)) {
+              showAppToast(
+                fr ? "E-mail non envoyé" : "Email not sent",
+                fr
+                  ? "Connexion OK, mais l’e-mail de bienvenue a échoué. Vérifie Resend (domaine moder-scroll.com) et réessaie."
+                  : "Signed in, but welcome email failed. Check Resend domain settings.",
+                "error"
               );
             }
+            return { ok: false, error: msg };
           }
+        }
+
+        async function queueWelcomeEmailAfterAuthWithRetry() {
+          let last = await queueWelcomeEmailAfterAuth({ showToast: true });
+          if (last?.sent || last?.skipped) return last;
+          await new Promise((r) => window.setTimeout(r, 1800));
+          const token = getBackendAccessToken();
+          if (!token) return last;
+          return queueWelcomeEmailAfterAuth({ showToast: false, force: false });
         }
 
         function notifyAuthSuccess(providerLabel) {
@@ -4578,7 +4616,7 @@
             "success"
           );
           updateAuthDoneButtonState();
-          void queueWelcomeEmailAfterAuth();
+          void queueWelcomeEmailAfterAuthWithRetry();
         }
 
         async function completeOAuthIfPending() {
@@ -7535,6 +7573,7 @@
               queueCloudSync("email-auth-created");
             })
               .then(() => {
+                notifyAuthSuccess("email");
                 showScreen("home");
               })
               .catch((err) => {
