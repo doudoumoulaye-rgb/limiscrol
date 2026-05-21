@@ -12,6 +12,8 @@
     "backend:dev": "npm --prefix backend run dev",
     "sync": "npm run build && node ./node_modules/@capacitor/cli/bin/capacitor sync",
     "android": "npm run build && node ./node_modules/@capacitor/cli/bin/capacitor open android",
+    "android:install": "npm run build && npx cap sync android && bash -c 'source scripts/android-java-home.sh && cd android && ./gradlew installRelease'",
+    "android:bundle": "npm run build && npx cap sync android && bash -c 'source scripts/android-java-home.sh && cd android && ./gradlew bundleRelease'",
     "ios": "npm run build && node ./node_modules/@capacitor/cli/bin/capacitor open ios"
   },
   "keywords": [],
@@ -20,6 +22,8 @@
   "type": "commonjs",
   "dependencies": {
     "@capacitor/android": "^8.1.0",
+    "@capacitor/app": "^8.1.0",
+    "@capacitor/browser": "^8.0.3",
     "@capacitor/core": "^8.1.0",
     "@capacitor/ios": "^8.1.0",
     "@capacitor/local-notifications": "^8.1.0",

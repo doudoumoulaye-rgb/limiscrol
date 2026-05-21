@@ -12,7 +12,8 @@ import java.util.Locale;
 public class ShortsBlockerAccessibilityService extends AccessibilityService {
     private static final int MIN_ACTION_GAP_MS = 1300;
     /** Entre deux signaux « scroll » comptés comme une nouvelle vidéo (évite le spam). */
-    private static final long SCROLL_SIGNAL_DEBOUNCE_MS = 2000L;
+    /** Une vidéo comptée au plus toutes les ~1,4 s par app (évite le double-comptage au scroll). */
+    private static final long SCROLL_SIGNAL_DEBOUNCE_MS = 1400L;
     private static final String KEY_LAST_SCROLL_PREFIX = "last_scroll_signal_";
     /** Limite de profondeur pour limiter le coût sur de gros arbres d'UI. */
     private static final int MAX_TREE_DEPTH = 32;

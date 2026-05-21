@@ -4,6 +4,25 @@
 
 L'auth est gérée par Supabase Auth. Le backend vérifie le token `Bearer` envoyé par l'app mobile.
 
+### Supabase — URLs de redirection (obligatoire pour Android)
+
+Dans **Authentication → URL Configuration** :
+
+| Champ | Valeur |
+|-------|--------|
+| **Site URL** | `https://limiscrol.onrender.com` |
+| **Redirect URLs** | Ajoute **chaque** ligne ci-dessous |
+
+```text
+https://limiscrol.onrender.com/auth/mobile-callback
+com.limitscroll.app://auth/callback
+com.limitscroll.app://**
+```
+
+L’URL **HTTPS** (`/auth/mobile-callback`) est le pont fiable : Supabase redirige d’abord vers ton API, puis la page renvoie vers l’app. Les schemes `com.limitscroll.app://…` restent en secours.
+
+Déploie le backend sur Render après modification pour que `/auth/mobile-callback` existe.
+
 ## Setup local
 
 1. Copier `.env.example` vers `.env` (déjà dans `.gitignore`)
@@ -51,7 +70,9 @@ npm run build && npx cap sync android
 | `PORT` | Port d'écoute (souvent imposé par la plateforme) |
 | `SUPABASE_URL` | URL projet Supabase |
 | `SUPABASE_ANON_KEY` | Clé anon (vérif JWT côté auth middleware) |
-| `SUPABASE_SERVICE_ROLE_KEY` | **Serveur uniquement** — persistance état |
+| `SUPABASE_SERVICE_ROLE_KEY` | **Serveur uniquement** — persistance état + e-mail bienvenue |
+| `RESEND_API_KEY` | Clé API Resend — e-mail « Bienvenue dans ModérScroll » après connexion |
+| `WELCOME_EMAIL_FROM` | Optionnel — défaut `ModérScroll <noreply@moder-scroll.com>` |
 | `CORS_ORIGINS` | Optionnel — voir ci-dessous |
 
 ### CORS
@@ -84,6 +105,7 @@ Réponse attendue : `{"ok":true,"authProviders":[...],"supabaseConfigured":true}
 - `PUT /api/state` — sync état client
 - `PUT /api/limits/:app` — limite + lock 24h (`tiktok|instagram|youtube`)
 - `POST /api/views/consume` — consomme 1 vue
+- `POST /api/auth/send-welcome-email` — envoie une fois l’e-mail de bienvenue (Google ou e-mail)
 
 ## Exemples API
 

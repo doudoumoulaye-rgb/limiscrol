@@ -11,11 +11,10 @@
   "revenueCat": {
     "entitlementId": "pro",
     "offeringId": "default",
-    "androidApiKey": "",
+    "androidApiKey": "goog_qnJSDdWvenrJAqeneMoVsmZbQmL",
     "iosApiKey": "",
     "products": {
-      "monthly5": "moder_scroll_premium",
-      "trial14": "moder_scroll_premium"
+      "monthly5": "moder_scroll_premium"
     }
   }
 }

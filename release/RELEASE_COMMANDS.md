@@ -8,7 +8,29 @@ npm run build
 npm run sync
 ```
 
+## Keystore (avant tout upload Play)
+
+**Obligatoire** — voir [KEYSTORE_BACKUP.md](./KEYSTORE_BACKUP.md).
+
+```bash
+chmod +x scripts/backup-keystore.sh
+./scripts/backup-keystore.sh --encrypt
+```
+
+Fichiers signés : `android/keystore/moder-scroll-upload.keystore` + `android/keystore.properties` (gitignored).
+
 ## Android (AAB Release)
+
+Depuis le terminal (si `keystore.properties` est configuré) :
+
+```bash
+cd android
+./gradlew bundleRelease
+```
+
+AAB : `android/app/build/outputs/bundle/release/app-release.aab`
+
+Ou via Android Studio :
 
 1) Ouvrir Android Studio:
 

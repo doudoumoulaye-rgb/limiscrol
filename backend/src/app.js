@@ -10,6 +10,7 @@ const {
   updateAppLimit,
   consumeOneView,
 } = require("./store");
+const welcomeEmailRouter = require("./routes/welcomeEmail");
 
 const app = express();
 const { config, missing } = getConfig();
@@ -37,17 +38,72 @@ function sendServerError(res, error) {
   return res.status(500).json({ error: "Request failed", details: error.message });
 }
 
+/**
+ * Pont HTTPS → deep link app (Supabase n’accepte pas toujours les schemes custom).
+ * Ajouter dans Supabase Redirect URLs : https://TON_API/auth/mobile-callback
+ */
+app.get("/auth/mobile-callback", (req, res) => {
+  const appDeepLink = "com.limitscroll.app://auth/callback";
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Cache-Control", "no-store");
+  res.send(`<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ModérScroll — connexion</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #050810; color: #e8e8e8; display: flex;
+      align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; padding: 24px; }
+    p { opacity: 0.85; margin: 0.5rem 0; }
+    a { display: inline-block; margin-top: 1.25rem; padding: 0.85rem 1.5rem; background: #3b82f6; color: #fff;
+      text-decoration: none; border-radius: 12px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div>
+    <p id="status">Ouverture de ModérScroll…</p>
+    <p style="font-size: 0.85rem; opacity: 0.6;">Si rien ne se passe, appuie sur le bouton ci-dessous.</p>
+    <a id="openApp" href="#">Ouvrir ModérScroll</a>
+  </div>
+  <script>
+    (function () {
+      var deep = ${JSON.stringify(appDeepLink)};
+      var target = deep + (window.location.search || "") + (window.location.hash || "");
+      var link = document.getElementById("openApp");
+      if (link) link.setAttribute("href", target);
+      window.location.replace(target);
+      setTimeout(function () {
+        var intentUrl = "intent://auth/callback" + (window.location.search || "") +
+          (window.location.hash || "") +
+          "#Intent;scheme=com.limitscroll.app;package=com.limitscroll.app;end";
+        try { window.location.href = intentUrl; } catch (e) {}
+      }, 600);
+      setTimeout(function () {
+        var el = document.getElementById("status");
+        if (el) el.textContent = "Retourne dans l'app ModérScroll.";
+      }, 2800);
+    })();
+  </script>
+</body>
+</html>`);
+});
+
 app.get("/health", (_req, res) => {
   const body = {
     ok: true,
     authProviders: ["email", "google", "apple"],
     supabaseConfigured: missing.length === 0,
+    welcomeEmailConfigured: Boolean((process.env.RESEND_API_KEY || "").trim()),
+    mobileCallback: true,
   };
   if (process.env.NODE_ENV !== "production") {
     body.missingEnv = missing;
   }
   res.json(body);
 });
+
+app.use("/api/auth", welcomeEmailRouter);
 
 app.get("/auth/me", requireAuth, (req, res) => {
   const user = req.user;
@@ -108,7 +164,9 @@ app.post("/api/views/consume", requireAuth, async (req, res) => {
     return res.status(400).json({ error: "Invalid app. Use tiktok, instagram or youtube." });
   }
   try {
-    const result = await consumeOneView(req.user.id, app);
+    const result = await consumeOneView(req.user.id, app, {
+      premiumActive: Boolean(req.body?.premium_active),
+    });
     return res.json(result);
   } catch (error) {
     return sendServerError(res, error);

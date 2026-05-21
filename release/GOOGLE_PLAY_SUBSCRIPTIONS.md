@@ -2,6 +2,8 @@
 
 L’app utilise **RevenueCat** + **Google Play Billing** (plugin `@revenuecat/purchases-capacitor`).
 
+**Guide pas à pas complet :** [SUBSCRIPTIONS_SETUP_COMPLET.md](./SUBSCRIPTIONS_SETUP_COMPLET.md)
+
 ## 1. Google Play Console
 
 1. Ouvre [Google Play Console](https://play.google.com/console) → ton app **ModérScroll** (`com.limitscroll.app`).
@@ -12,9 +14,9 @@ L’app utilise **RevenueCat** + **Google Play Billing** (plugin `@revenuecat/pu
    moder_scroll_premium
    ```
 
-4. Ajoute au moins **un forfait de base** :
-   - `monthly` — mensuel (ex. CHF 5 / mois)
-   - Optionnel : offre d’essai **14 jours gratuits** sur ce forfait
+4. Ajoute **un forfait de base** :
+   - `monthly` — mensuel (ex. CHF 3 / mois), **sans essai gratuit Play**
+   - Les **500 crédits gratuits** sont gérés dans l’app (pas sur Google Play)
 
 5. **Licence de test** : ajoute les adresses Gmail des testeurs (Réglages → Licence de test).
 
@@ -42,8 +44,7 @@ Dans `capacitor.config.json` :
   "androidApiKey": "goog_XXXXXXXXXXXX",
   "iosApiKey": "",
   "products": {
-    "monthly5": "moder_scroll_premium",
-    "trial14": "moder_scroll_premium"
+    "monthly5": "moder_scroll_premium"
   }
 }
 ```
@@ -67,7 +68,7 @@ npx cap sync android
 1. Installe un build signé (debug ou internal testing) depuis Play — **les achats factices ne marchent pas en APK sideload simple**.
 2. Connecte-toi avec un **compte testeur** Play.
 3. Dans l’app : épuise les crédits ou ouvre **Profil → Abonnement**.
-4. **Subscribe now** ou **14-day free trial** → la feuille Google Play s’ouvre.
+4. **S'abonner — 3 CHF / mois** → la feuille Google Play s’ouvre (un seul produit).
 5. **Restore purchases** doit réactiver l’accès après réinstall.
 
 ## 5. Checklist avant production

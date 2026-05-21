@@ -236,6 +236,39 @@
       .home-limit-display.is-locked {
         opacity: 0.55;
       }
+      .home-app-btn {
+        transition:
+          border-color 0.22s ease,
+          background-color 0.22s ease,
+          box-shadow 0.22s ease,
+          transform 0.18s ease;
+      }
+      .home-app-btn:not(.home-app-btn--selected) {
+        opacity: 0.72;
+      }
+      .home-app-btn--selected {
+        opacity: 1;
+        border-color: rgba(0, 123, 255, 0.7) !important;
+        background: linear-gradient(160deg, rgba(0, 123, 255, 0.22), rgba(10, 14, 24, 0.92));
+        box-shadow:
+          0 0 22px rgba(0, 123, 255, 0.42),
+          0 0 40px rgba(0, 123, 255, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        transform: scale(1.03);
+      }
+      .home-app-btn-icon {
+        transition:
+          box-shadow 0.22s ease,
+          transform 0.18s ease,
+          filter 0.22s ease;
+      }
+      .home-app-btn--selected .home-app-btn-icon {
+        transform: scale(1.08);
+        box-shadow:
+          0 0 18px rgba(0, 123, 255, 0.55),
+          0 0 28px rgba(77, 184, 255, 0.25);
+        filter: brightness(1.12) saturate(1.08);
+      }
       .home-limit-wheel-wrap {
         position: relative;
         width: 100%;
@@ -574,10 +607,10 @@
         </div>
 
         <div class="mb-10">
-          <h2 class="font-heading text-3xl font-bold leading-tight mb-3">
+          <h2 class="font-heading text-3xl font-bold leading-tight mb-3" data-i18n-html="quiz_q1_title_html">
             Which app steals most of your <span class="text-primary italic">time</span>?
           </h2>
-          <p class="text-muted-foreground font-medium">Select the one you find most addictive.</p>
+          <p class="text-muted-foreground font-medium" data-i18n="quiz_q1_sub">Select the one you find most addictive.</p>
         </div>
 
         <div class="flex-1 space-y-4 overflow-y-auto pr-1">
@@ -590,7 +623,7 @@
               </div>
               <div class="text-left">
                 <p class="font-bold text-lg">TikTok</p>
-                <p class="text-xs text-muted-foreground">Endless scrolling</p>
+                <p class="text-xs text-muted-foreground" data-i18n="quiz_q1_tiktok_sub">Endless scrolling</p>
               </div>
             </div>
             <iconify-icon icon="solar:check-circle-bold" class="text-primary text-2xl"></iconify-icon>
@@ -605,7 +638,7 @@
               </div>
               <div class="text-left">
                 <p class="font-bold text-lg">Instagram</p>
-                <p class="text-xs text-muted-foreground">Reels &amp; stories</p>
+                <p class="text-xs text-muted-foreground" data-i18n="quiz_q1_insta_sub">Reels &amp; stories</p>
               </div>
             </div>
             <div class="size-6 rounded-full border-2 border-muted group-hover:border-primary/50"></div>
@@ -620,7 +653,7 @@
               </div>
               <div class="text-left">
                 <p class="font-bold text-lg">YouTube</p>
-                <p class="text-xs text-muted-foreground">Shorts &amp; videos</p>
+                <p class="text-xs text-muted-foreground" data-i18n="quiz_q1_yt_sub">Shorts &amp; videos</p>
               </div>
             </div>
             <div class="size-6 rounded-full border-2 border-muted group-hover:border-primary/50"></div>
@@ -631,6 +664,7 @@
           <button
             data-next="q2"
             class="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-black text-lg shadow-[0_4px_20px_rgba(59,130,246,0.4)] flex items-center justify-center gap-2 group active:scale-[0.98] transition-all"
+            data-i18n="btn_next"
           >
             Next
             <iconify-icon
@@ -677,10 +711,10 @@
         </div>
 
         <div class="mb-10">
-          <h2 class="font-heading text-3xl font-bold leading-tight mb-3">
+          <h2 class="font-heading text-3xl font-bold leading-tight mb-3" data-i18n-html="quiz_q2_title_html">
             Daily <span class="text-primary italic">Video</span> Limit
           </h2>
-          <p class="text-muted-foreground font-medium">How many scrolls are you aiming for?</p>
+          <p class="text-muted-foreground font-medium" data-i18n="quiz_q2_sub">How many scrolls are you aiming for?</p>
         </div>
 
         <div class="flex-1 space-y-4">
@@ -688,8 +722,8 @@
             class="q2-choice w-full p-6 rounded-2xl bg-card/60 backdrop-blur-md border border-border flex items-center justify-between hover:border-primary/50 transition-all active:scale-[0.98]"
           >
             <div class="text-left">
-              <p class="font-bold text-xl uppercase tracking-tight">Heavy Restraint</p>
-              <p class="text-sm text-muted-foreground">Max 15 videos/day</p>
+              <p class="font-bold text-xl uppercase tracking-tight" data-i18n="quiz_q2_heavy">Heavy Restraint</p>
+              <p class="text-sm text-muted-foreground" data-i18n="quiz_q2_heavy_sub">Max 15 videos/day</p>
             </div>
             <iconify-icon
               icon="solar:shield-warning-bold"
@@ -701,8 +735,8 @@
             class="q2-choice w-full p-6 rounded-2xl bg-primary/10 backdrop-blur-md border-2 border-primary shadow-[0_0_15px_rgba(59,130,246,0.15)] flex items-center justify-between active:scale-[0.98]"
           >
             <div class="text-left">
-              <p class="font-bold text-xl uppercase tracking-tight">Balanced</p>
-              <p class="text-sm text-primary">Max 30 videos/day</p>
+              <p class="font-bold text-xl uppercase tracking-tight" data-i18n="quiz_q2_balanced">Balanced</p>
+              <p class="text-sm text-primary" data-i18n="quiz_q2_balanced_sub">Max 30 videos/day</p>
             </div>
             <iconify-icon
               icon="solar:check-circle-bold"
@@ -714,8 +748,8 @@
             class="q2-choice w-full p-6 rounded-2xl bg-card/60 backdrop-blur-md border border-border flex items-center justify-between hover:border-primary/50 transition-all active:scale-[0.98]"
           >
             <div class="text-left">
-              <p class="font-bold text-xl uppercase tracking-tight">Flexible</p>
-              <p class="text-sm text-muted-foreground">Max 50 videos/day</p>
+              <p class="font-bold text-xl uppercase tracking-tight" data-i18n="quiz_q2_flex">Flexible</p>
+              <p class="text-sm text-muted-foreground" data-i18n="quiz_q2_flex_sub">Max 50 videos/day</p>
             </div>
             <iconify-icon
               icon="solar:star-bold"
@@ -728,6 +762,7 @@
           <button
             data-next="q3"
             class="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-black text-lg shadow-[0_4px_20px_rgba(59,130,246,0.4)] flex items-center justify-center gap-2 group active:scale-[0.98] transition-all"
+            data-i18n="btn_next"
           >
             Next
             <iconify-icon
@@ -774,10 +809,10 @@
         </div>
 
         <div class="mb-10">
-          <h2 class="font-heading text-3xl font-bold leading-tight mb-3">
+          <h2 class="font-heading text-3xl font-bold leading-tight mb-3" data-i18n-html="quiz_q3_title_html">
             Peak <span class="text-primary italic">Focus</span> Hours
           </h2>
-          <p class="text-muted-foreground font-medium">When do you need the most control?</p>
+          <p class="text-muted-foreground font-medium" data-i18n="quiz_q3_sub">When do you need the most control?</p>
         </div>
 
         <div class="flex-1 space-y-4">
@@ -788,8 +823,8 @@
               <iconify-icon icon="solar:sun-2-bold" class="text-2xl text-primary"></iconify-icon>
             </div>
             <div class="text-left">
-              <p class="font-bold">Morning Flow</p>
-              <p class="text-xs text-muted-foreground">08:00 — 12:00</p>
+              <p class="font-bold" data-i18n="quiz_q3_morning">Morning Flow</p>
+              <p class="text-xs text-muted-foreground" data-i18n="quiz_q3_morning_sub">08:00 — 12:00</p>
             </div>
           </button>
 
@@ -800,8 +835,8 @@
               <iconify-icon icon="solar:case-bold" class="text-2xl text-primary"></iconify-icon>
             </div>
             <div class="text-left">
-              <p class="font-bold">Work Grind</p>
-              <p class="text-xs text-muted-foreground">09:00 — 17:00</p>
+              <p class="font-bold" data-i18n="quiz_q3_work">Work Grind</p>
+              <p class="text-xs text-muted-foreground" data-i18n="quiz_q3_work_sub">09:00 — 17:00</p>
             </div>
           </button>
 
@@ -812,8 +847,8 @@
               <iconify-icon icon="solar:moon-bold" class="text-2xl text-primary"></iconify-icon>
             </div>
             <div class="text-left flex-1">
-              <p class="font-bold">Night Rest</p>
-              <p class="text-xs text-primary">22:00 — 02:00</p>
+              <p class="font-bold" data-i18n="quiz_q3_night">Night Rest</p>
+              <p class="text-xs text-primary" data-i18n="quiz_q3_night_sub">22:00 — 02:00</p>
             </div>
             <iconify-icon
               icon="solar:check-circle-bold"
@@ -826,6 +861,7 @@
           <button
             data-next="q4"
             class="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-black text-lg shadow-[0_4px_20px_rgba(59,130,246,0.4)] flex items-center justify-center gap-2 group active:scale-[0.98] transition-all"
+            data-i18n="btn_next"
           >
             Next
             <iconify-icon
@@ -848,10 +884,10 @@
       </div>
 
       <div class="mb-10">
-        <h2 class="font-heading text-3xl font-bold leading-tight mb-3">
+        <h2 class="font-heading text-3xl font-bold leading-tight mb-3" data-i18n-html="quiz_q4_title_html">
           Your Primary <span class="text-primary italic">Goal</span>?
         </h2>
-        <p class="text-muted-foreground">What do you hope to achieve?</p>
+        <p class="text-muted-foreground" data-i18n="quiz_q4_sub">What do you hope to achieve?</p>
       </div>
 
       <div class="flex-1 space-y-4">
@@ -859,8 +895,8 @@
           class="q4-choice w-full p-6 rounded-2xl bg-primary/10 border-2 border-primary shadow-[0_0_15px_rgba(59,130,246,0.15)] flex items-center justify-between active:scale-[0.98] transition-all"
         >
           <div class="text-left">
-            <p class="font-bold text-lg">Stop Scrolling, Start Living</p>
-            <p class="text-sm text-primary">Max productivity mindset</p>
+            <p class="font-bold text-lg" data-i18n="quiz_q4_live">Stop Scrolling, Start Living</p>
+            <p class="text-sm text-primary" data-i18n="quiz_q4_live_sub">Max productivity mindset</p>
           </div>
           <iconify-icon
             icon="solar:rocket-bold"
@@ -872,8 +908,8 @@
           class="q4-choice w-full p-6 rounded-2xl bg-card border border-border flex items-center justify-between hover:border-primary/50 transition-colors active:scale-[0.98]"
         >
           <div class="text-left">
-            <p class="font-bold text-lg">Better Sleep</p>
-            <p class="text-sm text-muted-foreground">Cut screen time before bed</p>
+            <p class="font-bold text-lg" data-i18n="quiz_q4_sleep">Better Sleep</p>
+            <p class="text-sm text-muted-foreground" data-i18n="quiz_q4_sleep_sub">Cut screen time before bed</p>
           </div>
           <iconify-icon
             icon="solar:sleeping-bold"
@@ -885,8 +921,8 @@
           class="q4-choice w-full p-6 rounded-2xl bg-card border border-border flex items-center justify-between hover:border-primary/50 transition-colors active:scale-[0.98]"
         >
           <div class="text-left">
-            <p class="font-bold text-lg">Digital Detox</p>
-            <p class="text-sm text-muted-foreground">Full awareness of usage</p>
+            <p class="font-bold text-lg" data-i18n="quiz_q4_detox">Digital Detox</p>
+            <p class="text-sm text-muted-foreground" data-i18n="quiz_q4_detox_sub">Full awareness of usage</p>
           </div>
           <iconify-icon
             icon="solar:leaf-bold"
@@ -899,6 +935,7 @@
         <button
           data-next="welcome"
           class="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-lg shadow-[0_4px_20px_rgba(59,130,246,0.4)] flex items-center justify-center gap-2 group"
+          data-i18n="btn_complete_quiz"
         >
           Complete Quiz
           <iconify-icon
@@ -921,10 +958,13 @@
         >
           <iconify-icon icon="solar:infinity-bold" class="text-white text-6xl"></iconify-icon>
         </div>
-        <h2 class="text-[40px] font-black leading-[1.1] tracking-tight mb-6 text-white">
+        <h2
+          class="text-[40px] font-black leading-[1.1] tracking-tight mb-6 text-white"
+          data-i18n-html="welcome_title_html"
+        >
           Focus <br /><span class="text-primary italic">Reimagined.</span>
         </h2>
-        <p class="text-muted-foreground text-[17px] leading-relaxed font-medium">
+        <p class="text-muted-foreground text-[17px] leading-relaxed font-medium" data-i18n="welcome_body">
           Break the cycle of mindless scrolling and reclaim your time today.
         </p>
       </div>
@@ -933,26 +973,22 @@
         <button
           data-next="authMethods"
           class="w-full py-4.5 rounded-2xl bg-primary text-white font-bold text-[17px] shadow-lg shadow-primary/20 active:scale-[0.98] transition-all"
+          data-i18n="welcome_create"
         >
           Create Account
         </button>
         <button
           data-next="authMethods"
           class="w-full py-4.5 rounded-2xl bg-secondary/50 border border-border text-foreground font-bold text-[17px] active:bg-secondary transition-colors backdrop-blur-md"
+          data-i18n="welcome_login"
         >
           Log In
         </button>
         <p
           class="text-center text-[13px] text-muted-foreground pt-4 px-4 leading-relaxed font-medium"
+          data-i18n-html="welcome_terms_html"
         >
-          By continuing, you agree to our
-          <a href="#" class="text-foreground underline underline-offset-4 decoration-primary/30"
-            >Terms</a
-          >
-          and
-          <a href="#" class="text-foreground underline underline-offset-4 decoration-primary/30"
-            >Privacy Policy</a
-          >.
+          By continuing, you agree to our Terms and Privacy Policy.
         </p>
       </div>
     </section>
@@ -966,8 +1002,8 @@
           >
             <iconify-icon icon="solar:alt-arrow-left-linear" class="text-xl"></iconify-icon>
           </button>
-          <h2 class="font-heading text-4xl font-bold mb-4 text-white">Connect</h2>
-          <p class="text-muted-foreground text-lg">
+          <h2 class="font-heading text-4xl font-bold mb-4 text-white" data-i18n="auth_connect_title">Connect</h2>
+          <p class="text-muted-foreground text-lg" data-i18n="auth_connect_sub">
             Choose your preferred way to save your progress.
           </p>
         </div>
@@ -978,12 +1014,12 @@
             class="w-full h-16 rounded-2xl bg-white text-black font-bold flex items-center justify-center gap-3 hover:bg-gray-100 transition-colors shadow-lg shadow-white/5"
           >
             <iconify-icon icon="logos:google-icon" class="text-2xl"></iconify-icon>
-            Continue with Google
+            <span data-i18n="auth_google">Continue with Google</span>
           </button>
 
           <div class="flex items-center gap-4 py-4">
             <div class="flex-1 h-px bg-border/40"></div>
-            <span class="text-xs font-bold text-muted-foreground uppercase tracking-widest">or</span>
+            <span class="text-xs font-bold text-muted-foreground uppercase tracking-widest" data-i18n="auth_or">or</span>
             <div class="flex-1 h-px bg-border/40"></div>
           </div>
 
@@ -992,7 +1028,7 @@
             class="w-full h-16 rounded-2xl bg-card/80 backdrop-blur-md border border-border text-white font-bold flex items-center justify-center gap-3 hover:bg-muted/20 transition-colors"
           >
             <iconify-icon icon="solar:letter-bold" class="text-2xl text-primary"></iconify-icon>
-            Continue with Email
+            <span data-i18n="auth_email_continue">Continue with Email</span>
           </button>
         </div>
 
@@ -1001,7 +1037,7 @@
           class="mb-8 p-4 bg-destructive/10 backdrop-blur-md border border-destructive/20 rounded-2xl flex items-center gap-3"
         >
           <iconify-icon icon="solar:danger-bold" class="text-destructive text-xl"></iconify-icon>
-          <p class="text-xs font-medium text-destructive">
+          <p class="text-xs font-medium text-destructive" data-i18n="auth_sync_required">
             Connection required to sync your focus credits.
           </p>
         </div>
@@ -1012,6 +1048,7 @@
             data-next="home"
             disabled
             class="w-full py-4 rounded-2xl bg-muted text-muted-foreground font-bold text-lg cursor-not-allowed opacity-50"
+            data-i18n="auth_done"
           >
             I'm done connecting
           </button>
@@ -1028,40 +1065,42 @@
           >
             <iconify-icon icon="solar:alt-arrow-left-linear" class="text-xl"></iconify-icon>
           </button>
-          <h2 class="font-heading text-4xl font-bold mb-2 text-white">Sign Up</h2>
-          <p class="text-muted-foreground">Create your account via email.</p>
+          <h2 class="font-heading text-4xl font-bold mb-2 text-white" data-i18n="auth_signup_title">Sign Up</h2>
+          <p class="text-muted-foreground" data-i18n="auth_signup_sub">Create your account via email.</p>
         </div>
 
-        <form id="emailAuthForm" class="flex-1 space-y-6">
+        <form id="emailAuthForm" class="flex-1 space-y-6" autocomplete="off">
           <div class="space-y-2">
-            <label class="text-sm font-bold text-muted-foreground ml-1 uppercase tracking-widest">Full Name</label>
+            <label class="text-sm font-bold text-muted-foreground ml-1 uppercase tracking-widest" data-i18n="auth_fullname_label">Full Name</label>
             <div class="relative">
               <input
                 name="fullName"
                 type="text"
                 required
-                placeholder="Pape Doudou Gueye"
+                autocomplete="name"
+                value=""
+                data-i18n-placeholder="auth_fullname_ph"
+                placeholder="Full name"
                 class="w-full h-14 bg-card/80 backdrop-blur-md border border-border rounded-2xl px-12 focus:border-primary outline-none transition-colors shadow-inner"
               />
               <iconify-icon
                 icon="solar:user-bold"
                 class="absolute left-4 top-1/2 -translate-y-1/2 text-primary text-xl"
               ></iconify-icon>
-              <iconify-icon
-                icon="solar:check-circle-bold"
-                class="absolute right-4 top-1/2 -translate-y-1/2 text-green-500 text-xl"
-              ></iconify-icon>
             </div>
           </div>
 
           <div class="space-y-2">
-            <label class="text-sm font-bold text-muted-foreground ml-1 uppercase tracking-widest">Email Address</label>
+            <label class="text-sm font-bold text-muted-foreground ml-1 uppercase tracking-widest" data-i18n="auth_email_label">Email Address</label>
             <div class="relative">
               <input
                 name="email"
                 type="email"
                 required
-                placeholder="pape@example.com"
+                autocomplete="email"
+                value=""
+                data-i18n-placeholder="auth_email_ph"
+                placeholder="Email"
                 class="w-full h-14 bg-card/80 backdrop-blur-md border border-border rounded-2xl px-12 focus:border-primary outline-none transition-colors shadow-inner"
               />
               <iconify-icon
@@ -1072,9 +1111,10 @@
           </div>
 
           <div class="space-y-2">
-            <label class="text-sm font-bold text-muted-foreground ml-1 uppercase tracking-widest">Password</label>
+            <label class="text-sm font-bold text-muted-foreground ml-1 uppercase tracking-widest" data-i18n="auth_password_label">Password</label>
             <div class="relative">
               <input
+                id="emailAuthPasswordInput"
                 name="password"
                 type="password"
                 minlength="6"
@@ -1086,10 +1126,17 @@
                 icon="solar:lock-password-bold"
                 class="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-xl"
               ></iconify-icon>
-              <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2">
+              <button
+                type="button"
+                id="emailAuthPasswordToggle"
+                class="absolute right-4 top-1/2 -translate-y-1/2 p-1 active:opacity-70"
+                aria-label="Show password"
+                aria-pressed="false"
+              >
                 <iconify-icon
+                  id="emailAuthPasswordToggleIcon"
                   icon="solar:eye-closed-bold"
-                  class="text-muted-foreground text-xl"
+                  class="text-muted-foreground text-xl pointer-events-none"
                 ></iconify-icon>
               </button>
             </div>
@@ -1103,7 +1150,7 @@
               <div class="h-1 flex-1 bg-muted rounded-full"></div>
               <div class="h-1 flex-1 bg-muted rounded-full"></div>
             </div>
-            <p class="text-[10px] text-muted-foreground uppercase font-bold tracking-widest mt-1">
+            <p class="text-[10px] text-muted-foreground uppercase font-bold tracking-widest mt-1" data-i18n="auth_strength_medium">
               Strength: Medium
             </p>
           </div>
@@ -1112,12 +1159,71 @@
             <button
               type="submit"
               class="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-lg shadow-[0_4px_20px_rgba(59,130,246,0.4)]"
+              data-i18n="auth_create_btn"
             >
               Create Account
             </button>
             <p class="text-center mt-6 text-sm text-muted-foreground font-medium">
-              Already have an account? <button type="button" data-prev="authMethods" class="text-primary font-bold">Log In</button>
+              <span data-i18n="auth_have_account">Already have an account?</span>
+              <button type="button" data-prev="authMethods" class="text-primary font-bold" data-i18n="auth_login_btn">Log In</button>
             </p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="emailOtpVerify" class="screen min-h-screen bg-[#000000] relative flex-col p-6 overflow-hidden font-[Inter]">
+      <div class="relative z-10 flex flex-col h-full">
+        <div class="mb-8 pt-8">
+          <button
+            type="button"
+            data-prev="emailAuth"
+            class="size-10 rounded-full bg-card/80 backdrop-blur-md border border-border flex items-center justify-center mb-8"
+          >
+            <iconify-icon icon="solar:alt-arrow-left-linear" class="text-xl"></iconify-icon>
+          </button>
+          <h2 class="font-heading text-4xl font-bold mb-2 text-white" data-i18n="auth_otp_title">Confirm your email</h2>
+          <p class="text-muted-foreground" data-i18n="auth_otp_sub">
+            Enter the confirmation code from your email (6–8 digits).
+          </p>
+          <p id="emailOtpTargetEmail" class="text-primary font-semibold mt-3 text-sm break-all"></p>
+        </div>
+
+        <form id="emailOtpForm" class="flex-1 flex flex-col">
+          <div class="space-y-2">
+            <label class="text-sm font-bold text-muted-foreground ml-1 uppercase tracking-widest" data-i18n="auth_otp_label">
+              Confirmation code
+            </label>
+            <input
+              id="emailOtpCodeInput"
+              name="otp"
+              type="text"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              maxlength="8"
+              pattern="[0-9]{6,8}"
+              required
+              placeholder="00000000"
+              class="w-full h-16 bg-card/80 backdrop-blur-md border border-border rounded-2xl px-6 text-center text-2xl font-bold tracking-[0.35em] focus:border-primary outline-none transition-colors shadow-inner"
+            />
+          </div>
+
+          <div class="pb-8 mt-auto space-y-4">
+            <button
+              type="submit"
+              class="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-lg shadow-[0_4px_20px_rgba(59,130,246,0.4)]"
+              data-i18n="auth_otp_verify_btn"
+            >
+              Verify and continue
+            </button>
+            <button
+              type="button"
+              id="emailOtpResendBtn"
+              class="w-full py-3 rounded-2xl border border-border text-muted-foreground font-semibold text-sm"
+              data-i18n="auth_otp_resend_btn"
+            >
+              Resend code
+            </button>
           </div>
         </form>
       </div>
@@ -1144,34 +1250,41 @@
           >
             Premium Access
           </div>
-          <h2 class="text-4xl font-black tracking-tight text-white">Unlock Full Focus</h2>
-          <p class="text-muted-foreground font-medium">
-            Take control of your digital life without limits.
+          <h2 class="text-4xl font-black tracking-tight text-white" data-i18n="subscription_title">Premium ModérScroll</h2>
+          <p class="text-muted-foreground font-medium" data-i18n="subscription_sub">
+            Accès illimité après tes crédits gratuits dans l'app.
           </p>
         </div>
 
         <div class="px-6 space-y-3 mt-auto">
           <p id="subscriptionStorePrice" class="text-center text-sm text-primary font-bold min-h-[1.25rem]"></p>
+          <div
+            id="subscriptionStoreHelp"
+            class="hidden rounded-2xl border border-orange-400/30 bg-orange-950/40 px-4 py-3 text-left text-[11px] text-orange-100/95 leading-relaxed space-y-2"
+          ></div>
           <button
             type="button"
-            data-plan="trial14"
-            class="w-full py-4 rounded-[2rem] border-2 border-primary/40 bg-primary/10 text-primary font-bold text-base active:scale-[0.98] transition-all"
+            id="subscriptionStoreRetryBtn"
+            class="hidden w-full py-2.5 rounded-xl border border-primary/35 text-primary text-sm font-bold"
           >
-            14-day free trial
+            Réessayer la connexion au store
           </button>
           <button
             type="button"
             data-plan="monthly5"
+            id="subscriptionBuyBtn"
             class="w-full py-5 rounded-[2rem] bg-primary text-white font-black text-lg sm:text-xl leading-tight shadow-xl shadow-primary/30 active:scale-[0.98] transition-all px-3"
+            data-i18n="subscription_cta"
           >
-            Subscribe now
+            S'abonner — 3 CHF / mois
           </button>
           <button
             type="button"
             id="subscriptionRestoreBtn"
             class="w-full py-3 text-muted-foreground font-medium text-sm"
+            data-i18n="subscription_restore"
           >
-            Restore purchases
+            Restaurer mes achats
           </button>
           <p
             class="text-center text-[11px] text-muted-foreground mt-2 font-medium tracking-tight opacity-80 uppercase tracking-widest"
@@ -1212,7 +1325,7 @@
             <div class="h-px bg-white/5 w-full"></div>
             <div class="flex justify-between items-center text-zinc-400">
               <span class="text-sm font-medium">Prix</span>
-              <span class="text-white font-bold tracking-tight">5 francs / mois</span>
+              <span class="text-white font-bold tracking-tight">3 francs / mois</span>
             </div>
           </div>
           <div class="flex flex-col items-center justify-center py-10">
@@ -1383,33 +1496,39 @@
 
           <div class="grid grid-cols-3 gap-2.5">
             <button
+              type="button"
               data-app="tiktok"
-              class="home-app-btn glass-panel rounded-2xl border border-white/8 p-3 flex flex-col items-center gap-2 neo-pill"
+              aria-pressed="true"
+              class="home-app-btn home-app-btn--selected glass-panel rounded-2xl border border-white/8 p-3 flex flex-col items-center gap-2"
             >
-              <div class="size-10 rounded-xl bg-black flex items-center justify-center neo-pill">
+              <div class="home-app-btn-icon size-10 rounded-xl bg-black flex items-center justify-center neo-pill">
                 <iconify-icon icon="logos:tiktok-icon" class="size-6"></iconify-icon>
               </div>
-              <span class="font-semibold text-sm text-[#E0E0E0]">TikTok</span>
+              <span class="home-app-btn-label text-sm font-semibold text-[#E0E0E0]">TikTok</span>
             </button>
             <button
+              type="button"
               data-app="instagram"
+              aria-pressed="false"
               class="home-app-btn glass-panel rounded-2xl border border-white/8 p-3 flex flex-col items-center gap-2"
             >
               <div
-                class="size-10 rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] flex items-center justify-center neo-pill"
+                class="home-app-btn-icon size-10 rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] flex items-center justify-center neo-pill"
               >
                 <iconify-icon icon="hugeicons:instagram" class="size-5 text-white"></iconify-icon>
               </div>
-              <span class="font-medium text-sm text-muted-foreground">Instagram</span>
+              <span class="home-app-btn-label text-sm font-medium text-muted-foreground">Instagram</span>
             </button>
             <button
+              type="button"
               data-app="youtube"
+              aria-pressed="false"
               class="home-app-btn glass-panel rounded-2xl border border-white/8 p-3 flex flex-col items-center gap-2"
             >
-              <div class="size-10 rounded-xl bg-white flex items-center justify-center neo-pill">
+              <div class="home-app-btn-icon size-10 rounded-xl bg-white flex items-center justify-center neo-pill">
                 <iconify-icon icon="logos:youtube-icon" class="size-6"></iconify-icon>
               </div>
-              <span class="font-medium text-sm text-muted-foreground">YouTube</span>
+              <span class="home-app-btn-label text-sm font-medium text-muted-foreground">YouTube</span>
             </button>
           </div>
 
@@ -1471,14 +1590,14 @@
                 class="w-full py-4 rounded-2xl bg-primary text-white font-bold text-[16px] flex items-center justify-center gap-2 neo-pill active:scale-[0.99] transition-transform shadow-[0_12px_36px_rgba(0,123,255,0.45)]"
               >
                 <iconify-icon icon="solar:lock-bold" class="text-xl"></iconify-icon>
-                Verrouiller les Apps pour 24h
+                <span data-i18n="limit_lock_btn">Verrouiller la limite</span>
               </button>
               <div
                 class="mt-3 w-full flex items-center justify-center gap-2 px-3 py-1.5 rounded-xl glass-panel border border-primary/20"
               >
                 <iconify-icon icon="solar:lock-bold" class="text-primary text-sm"></iconify-icon>
                 <span id="homeLimitLockInfo" class="text-xs font-bold text-primary text-center leading-snug">
-                  Limite active — tu peux ajuster puis verrouiller 24h.
+                  Choisis ta limite, puis appuie sur « Verrouiller la limite » pour démarrer le décompte.
                 </span>
               </div>
             </div>
@@ -1860,8 +1979,8 @@
                 </button>
                 <input id="profilePhotoInput" type="file" accept="image/*" class="hidden" />
               </div>
-              <h1 id="profileDisplayName" class="text-2xl font-black font-app-title tracking-tight text-[#E0E0E0]">
-                Pape Doudou
+              <h1 id="profileDisplayName" class="text-2xl font-black font-app-title tracking-tight text-[#E0E0E0]" data-i18n="profile_guest_name">
+                User
               </h1>
               <p id="profileRankText" class="text-[11px] font-black text-[#007BFF] uppercase tracking-[0.2em] mt-2">
                 Bronze I • 0 XP
@@ -2026,10 +2145,6 @@
       </div>
       <div class="mt-8 space-y-3">
         <label class="flex items-center justify-between rounded-3xl bg-card border border-border p-4">
-          <span class="font-bold">Alertes paliers (75 % / 50 % / 25 % restants)</span>
-          <input id="notifNearLimit" type="checkbox" class="size-5" />
-        </label>
-        <label class="flex items-center justify-between rounded-3xl bg-card border border-border p-4">
           <span class="font-bold">Alerte depassement</span>
           <input id="notifOverLimit" type="checkbox" class="size-5" />
         </label>
@@ -2041,6 +2156,13 @@
           <span class="font-bold">Bilan vidéos : rappel dimanche soir (18 h+) et fin de semaine ; jalons du mois</span>
           <input id="notifVideoMilestones" type="checkbox" class="size-5" />
         </label>
+        <label class="flex items-center justify-between rounded-3xl bg-card border border-border p-4">
+          <span class="font-bold" data-i18n="notif_daily_reset_label">Nouveau jour : limites réinitialisées</span>
+          <input id="notifDailyReset" type="checkbox" class="size-5" />
+        </label>
+        <p class="text-xs text-muted-foreground -mt-1 px-1 leading-snug" data-i18n="notif_daily_reset_hint">
+          Rappel chaque matin à 8 h, même si l'app est fermée.
+        </p>
       </div>
       <button id="saveNotifSettingsBtn" class="mt-6 w-full py-4 rounded-3xl bg-primary text-primary-foreground font-bold">
         Sauvegarder
@@ -2089,39 +2211,12 @@
               <span id="subscriptionDetailsNextPayment" class="text-slate-950 font-bold">—</span>
             </div>
             <div class="flex justify-between items-center text-sm font-medium">
-              <span class="text-slate-800">Prix</span><span class="text-slate-950 font-black">5 francs / mois</span>
+              <span class="text-slate-800">Prix</span><span class="text-slate-950 font-black">3 francs / mois</span>
             </div>
           </div>
         </div>
 
-        <div class="space-y-3 mb-6">
-          <div class="rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-4">
-            <p class="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Offre unique</p>
-            <p class="text-sm text-foreground/90 leading-relaxed">
-              ModérScroll ne propose qu’<strong class="text-foreground">un seul abonnement Premium</strong>, facturé
-              <strong class="text-foreground">5&nbsp;francs&nbsp;/&nbsp;mois</strong> via le store. Pas de grille de
-              formules à comparer — tout est inclus dans ce forfait.
-            </p>
-          </div>
-          <div class="rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-4">
-            <p class="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">
-              Nouveau téléphone ou réinstallation
-            </p>
-            <p class="text-sm text-foreground/90 leading-relaxed mb-3">
-              Si tu as déjà souscrit avec le même compte Google Play ou App&nbsp;Store, utilise «&nbsp;Restaurer mes
-              achats&nbsp;» pour retrouver Premium sans repayer.
-            </p>
-            <button
-              type="button"
-              id="subscriptionDetailsRestoreBtn"
-              class="w-full py-3 rounded-xl border border-white/50 bg-white/10 text-white font-bold text-sm hover:bg-white/15 active:scale-[0.99] transition-colors"
-            >
-              Restaurer mes achats
-            </button>
-          </div>
-        </div>
-
-        <div class="mt-auto pb-4 space-y-3">
+        <div class="mt-auto pb-4 space-y-3 flex-1 flex flex-col justify-end">
           <button
             id="goToOfferBtn"
             data-next="subscription"
@@ -2130,9 +2225,14 @@
           >
             Voir l’offre Premium (prix)
           </button>
-          <p class="text-[11px] text-center text-muted-foreground leading-snug px-1">
-            Rappel de l’offre affichée dans le store : une seule formule Premium.
-          </p>
+          <button
+            type="button"
+            id="subscriptionDetailsRestoreBtn"
+            class="w-full py-3 text-muted-foreground font-medium text-sm"
+            data-i18n="subscription_restore"
+          >
+            Restaurer mes achats
+          </button>
           <button
             type="button"
             id="subscriptionDetailsManageStoreBtn"
@@ -2290,6 +2390,7 @@
       </div>
     </div>
 
+    <script src="i18n/onboarding-packs.js"></script>
     <script>
       (function setupStartupDiagnostics() {
         function ensureCrashBanner() {
@@ -2371,6 +2472,10 @@
         const HOME_PERMISSIONS_KEY = "limitscrollHomePermissions";
         const HOME_SETUP_DISMISS_MS = 12000;
         const NOTIF_SETTINGS_KEY = "limitscrollNotificationSettings";
+        const DAILY_RESET_SCHEDULED_NOTIF_ID = 900001;
+        const DAILY_RESET_NOTIF_DAY_KEY = "limitscrollDailyResetNotifDay";
+        const DAILY_RESET_SCHEDULE_HOUR = 8;
+        const DAILY_RESET_SCHEDULE_MINUTE = 0;
         const LIFETIME_VIDEOS_SEEN_KEY = "limitscrollLifetimeVideosSeen";
         const VIDEO_SEEN_PERIODS_KEY = "limitscrollVideoSeenPeriods";
         const CLOUD_SYNC_STATE_KEY = "limitscrollCloudSyncState";
@@ -2382,10 +2487,38 @@
         let scrollBypassSetupDraft = "";
         let RC_ENTITLEMENT_ID = "pro";
         let RC_OFFERING_ID = "default";
-        let RC_PRODUCT_IDS = { monthly5: "moder_scroll_premium", trial14: "moder_scroll_premium" };
+        const SUBSCRIPTION_PLAN_KEY = "monthly5";
+        let RC_PRODUCT_IDS = { monthly5: "moder_scroll_premium" };
+        let RC_GOOGLE_BASE_PLAN = "monthly";
         let RC_API_KEY_ANDROID_PUBLISHED = "";
         let RC_API_KEY_IOS_PUBLISHED = "";
         let revenueCatConfigLoaded = false;
+        let revenueCatConfigured = false;
+        let storeBillingReady = null;
+
+        function applyRevenueCatConfigBlock(cfg) {
+          if (!cfg || typeof cfg !== "object") return;
+          const rc = cfg.revenueCat || cfg;
+          const gp = cfg.googlePlay || rc.googlePlay;
+          if (rc.entitlementId) RC_ENTITLEMENT_ID = rc.entitlementId;
+          if (rc.offeringId) RC_OFFERING_ID = rc.offeringId;
+          if (rc.products && typeof rc.products === "object") {
+            RC_PRODUCT_IDS = { ...RC_PRODUCT_IDS, ...rc.products };
+          }
+          if (gp?.subscriptionProductId) {
+            RC_PRODUCT_IDS.monthly5 = gp.subscriptionProductId;
+          }
+          if (gp?.basePlanMonthly) {
+            RC_GOOGLE_BASE_PLAN = gp.basePlanMonthly;
+          }
+          if (rc.androidApiKey) RC_API_KEY_ANDROID_PUBLISHED = rc.androidApiKey;
+          if (rc.iosApiKey) RC_API_KEY_IOS_PUBLISHED = rc.iosApiKey;
+          if (!rc.androidApiKey && typeof cfg === "object") {
+            const raw = JSON.stringify(cfg);
+            const goog = raw.match(/goog_[A-Za-z0-9]+/);
+            if (goog) RC_API_KEY_ANDROID_PUBLISHED = goog[0];
+          }
+        }
 
         async function loadRevenueCatConfig() {
           if (revenueCatConfigLoaded) return;
@@ -2395,16 +2528,14 @@
             try {
               const res = await fetch(url, { cache: "no-store" });
               if (!res.ok) continue;
-              const cfg = await res.json();
-              const rc = cfg.revenueCat || cfg;
-              if (rc.entitlementId) RC_ENTITLEMENT_ID = rc.entitlementId;
-              if (rc.offeringId) RC_OFFERING_ID = rc.offeringId;
-              if (rc.products && typeof rc.products === "object") {
-                RC_PRODUCT_IDS = { ...RC_PRODUCT_IDS, ...rc.products };
+              const text = await res.text();
+              try {
+                applyRevenueCatConfigBlock(JSON.parse(text));
+              } catch (_parseErr) {
+                const goog = text.match(/goog_[A-Za-z0-9]+/);
+                if (goog) RC_API_KEY_ANDROID_PUBLISHED = goog[0];
               }
-              if (rc.androidApiKey) RC_API_KEY_ANDROID_PUBLISHED = rc.androidApiKey;
-              if (rc.iosApiKey) RC_API_KEY_IOS_PUBLISHED = rc.iosApiKey;
-              break;
+              if (RC_API_KEY_ANDROID_PUBLISHED || RC_API_KEY_IOS_PUBLISHED) break;
             } catch (_e) {}
           }
         }
@@ -2446,10 +2577,14 @@
             const base = String(raw || "")
               .toLowerCase()
               .split("-")[0];
-            if (base === "fr") return "fr";
-            if (base === "en") return "en";
+            if (base === "fr" || base === "en" || base === "de" || base === "es") return base;
           }
           return "en";
+        }
+
+        function pickLocalePack(pack) {
+          if (!pack || typeof pack !== "object") return null;
+          return pack[uiLocale] || pack.en || pack.fr || null;
         }
 
         const uiLocale = resolveUiLocale();
@@ -2505,9 +2640,19 @@
             credits_empty_hint: "Crédits épuisés. Active l'abonnement pour continuer.",
             credits_remaining_hint: "Stock gratuit restant: {n} crédit(s).",
             credits_toast_title: "Crédits épuisés",
-            credits_toast_body: "Ton accès gratuit est terminé. Choisis un plan pour continuer.",
-            plan_trial14: "14 jours gratuits, puis 5 francs/mois",
-            plan_monthly5: "Abonnement mensuel : 5 francs/mois",
+            credits_toast_body: "Tes 500 crédits gratuits sont épuisés. Passe au Premium (3 CHF/mois via Google Play).",
+            plan_monthly5: "Abonnement Premium : 3 francs/mois",
+            subscription_title: "Premium ModérScroll",
+            subscription_sub: "Accès illimité après tes crédits gratuits dans l'app.",
+            subscription_free_label: "Déjà gratuit dans l'app",
+            subscription_free_note:
+              "500 crédits scroll offerts à l'installation — sans abonnement Google Play. Quand ils sont épuisés, passe au Premium.",
+            subscription_cta: "S'abonner — 3 CHF / mois",
+            subscription_restore: "Restaurer mes achats",
+            limit_lock_btn: "Verrouiller la limite",
+            limit_pending_hint:
+              "Décompte inactif : choisis ta limite puis appuie sur « Verrouiller la limite ».",
+            limit_remaining_pending: "—",
             home_banner_btn: "Configurer maintenant",
             setup_title: "Configuration requise",
             setup_heading: "Active tes paramètres essentiels",
@@ -2560,9 +2705,19 @@
             credits_empty_hint: "No credits left. Subscribe to continue.",
             credits_remaining_hint: "Free allowance left: {n} credits.",
             credits_toast_title: "No credits left",
-            credits_toast_body: "Your free allowance is used up. Pick a plan to continue.",
-            plan_trial14: "14-day trial, then CHF 5/month",
-            plan_monthly5: "Monthly subscription: CHF 5/month",
+            credits_toast_body: "Your 500 free credits are used up. Subscribe to Premium (CHF 3/month via Google Play).",
+            plan_monthly5: "Premium subscription: CHF 3/month",
+            subscription_title: "ModérScroll Premium",
+            subscription_sub: "Unlimited access after your free in-app credits.",
+            subscription_free_label: "Already free in the app",
+            subscription_free_note:
+              "500 scroll credits at install — no Google Play subscription needed. When they run out, upgrade to Premium.",
+            subscription_cta: "Subscribe — CHF 3 / month",
+            subscription_restore: "Restore purchases",
+            limit_lock_btn: "Lock limit",
+            limit_pending_hint:
+              "Counting paused: set your limit, then tap “Lock limit”.",
+            limit_remaining_pending: "—",
             home_banner_btn: "Set up now",
             setup_title: "Setup required",
             setup_heading: "Turn on essential settings",
@@ -2570,7 +2725,18 @@
               "Until permissions and accessibility are valid, this message will keep coming back automatically.",
             setup_later: "Later",
           },
+          de: {},
+          es: {},
         };
+
+        (function mergeOnboardingI18nPacks() {
+          const packs = window.LIMITSCROLL_ONBOARDING_I18N;
+          if (!packs) return;
+          ["fr", "en", "de", "es"].forEach((loc) => {
+            if (!UI_STRINGS[loc]) UI_STRINGS[loc] = { ...(UI_STRINGS.en || {}) };
+            Object.assign(UI_STRINGS[loc], packs[loc] || {});
+          });
+        })();
 
         function msg(key) {
           const pack = UI_STRINGS[uiLocale] || UI_STRINGS.en;
@@ -2595,25 +2761,69 @@
             const text = msg(key);
             if (typeof text === "string") el.textContent = text;
           });
+          document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+            const key = el.getAttribute("data-i18n-placeholder");
+            if (!key || !("placeholder" in el)) return;
+            el.placeholder = msg(key);
+          });
+          document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+            const key = el.getAttribute("data-i18n-html");
+            if (!key) return;
+            const html = msg(key);
+            if (typeof html === "string") el.innerHTML = html;
+          });
         }
 
-        function subscriptionPlanLabel(planKey) {
-          const k = planKey === "monthly5" ? "plan_monthly5" : "plan_trial14";
-          return msg(k);
+        const EMAIL_OTP_MIN_LEN = 6;
+        const EMAIL_OTP_MAX_LEN = 8;
+
+        function setEmailPasswordVisible(visible) {
+          const input = document.getElementById("emailAuthPasswordInput");
+          const icon = document.getElementById("emailAuthPasswordToggleIcon");
+          const toggle = document.getElementById("emailAuthPasswordToggle");
+          if (!input || !icon) return;
+          input.type = visible ? "text" : "password";
+          icon.setAttribute("icon", visible ? "solar:eye-bold" : "solar:eye-closed-bold");
+          if (toggle) {
+            const fr = resolveUiLocale() === "fr";
+            toggle.setAttribute("aria-pressed", visible ? "true" : "false");
+            toggle.setAttribute(
+              "aria-label",
+              visible
+                ? fr
+                  ? "Masquer le mot de passe"
+                  : "Hide password"
+                : fr
+                  ? "Afficher le mot de passe"
+                  : "Show password"
+            );
+          }
+        }
+
+        function resetEmailAuthForm() {
+          const form = document.getElementById("emailAuthForm");
+          if (!form) return;
+          form.reset();
+          form.querySelectorAll("input").forEach((input) => {
+            input.value = "";
+            input.removeAttribute("value");
+          });
+          setEmailPasswordVisible(false);
+        }
+
+        function getSubscriptionPlanKey() {
+          const stored = localStorage.getItem("limitscrollSubscriptionPlan");
+          if (stored === "trial14") {
+            localStorage.setItem("limitscrollSubscriptionPlan", SUBSCRIPTION_PLAN_KEY);
+          }
+          return SUBSCRIPTION_PLAN_KEY;
+        }
+
+        function subscriptionPlanLabel(_planKey) {
+          return msg("plan_monthly5");
         }
         // Production: set HTTPS URL before store build, or localStorage limitscrollApiBase (persists). Dev: emulator / localhost.
         const RELEASE_API_BASE = "";
-        const BACKEND_API_BASE = (() => {
-          try {
-            const fromStorage = localStorage.getItem("limitscrollApiBase");
-            if (fromStorage && String(fromStorage).trim()) return String(fromStorage).trim().replace(/\r?\n/g, "");
-          } catch (_e) {}
-          const rel = typeof RELEASE_API_BASE === "string" ? RELEASE_API_BASE.trim() : "";
-          if (rel) return rel.replace(/\/+$/, "");
-          const platform = window.Capacitor?.getPlatform?.() || "web";
-          if (platform === "android") return "http://10.0.2.2:8787";
-          return "http://localhost:8787";
-        })();
         const SUPABASE_DEFAULT_URL = "";
         const SUPABASE_DEFAULT_ANON_KEY = "";
 
@@ -2625,6 +2835,22 @@
           }
           return s.replace(/\r?\n/g, "").trim();
         }
+
+        function resolveBackendApiBase() {
+          const rel = typeof RELEASE_API_BASE === "string" ? RELEASE_API_BASE.trim().replace(/\/+$/, "") : "";
+          let fromStorage = "";
+          try {
+            fromStorage = normalizeStoredUrl(localStorage.getItem("limitscrollApiBase")).replace(/\/+$/, "");
+          } catch (_e) {}
+          // URL HTTPS du build (Render) prioritaire — évite un vieux localhost laissé en cache WebView.
+          if (rel && /^https:\/\//i.test(rel)) return rel;
+          if (fromStorage) return fromStorage;
+          if (rel) return rel;
+          const platform = window.Capacitor?.getPlatform?.() || "web";
+          if (platform === "android") return "http://10.0.2.2:8787";
+          return "http://localhost:8787";
+        }
+        const BACKEND_API_BASE = resolveBackendApiBase();
 
         function normalizeStoredJwt(raw) {
           if (raw == null) return "";
@@ -2652,26 +2878,72 @@
           );
         }
 
-        let supabaseUrlResolved = normalizeStoredUrl(localStorage.getItem("limitscrollSupabaseUrl")) || SUPABASE_DEFAULT_URL;
-        let supabaseAnonResolved =
-          normalizeStoredJwt(localStorage.getItem("limitscrollSupabaseAnonKey")) || SUPABASE_DEFAULT_ANON_KEY;
-        if (!isLikelySupabaseUrl(supabaseUrlResolved)) {
-          console.warn("[ModérScroll] URL Supabase invalide dans localStorage — utilisation du défaut.");
+        let supabaseUrlResolved = "";
+        let supabaseAnonResolved = "";
+        if (isLikelySupabaseUrl(SUPABASE_DEFAULT_URL) && isLikelyJwtKey(SUPABASE_DEFAULT_ANON_KEY)) {
           supabaseUrlResolved = SUPABASE_DEFAULT_URL;
-        }
-        if (!isLikelyJwtKey(supabaseAnonResolved)) {
-          console.warn("[ModérScroll] Clé anon Supabase invalide dans localStorage — utilisation du défaut.");
           supabaseAnonResolved = SUPABASE_DEFAULT_ANON_KEY;
+        } else {
+          supabaseUrlResolved =
+            normalizeStoredUrl(localStorage.getItem("limitscrollSupabaseUrl")) || SUPABASE_DEFAULT_URL;
+          supabaseAnonResolved =
+            normalizeStoredJwt(localStorage.getItem("limitscrollSupabaseAnonKey")) || SUPABASE_DEFAULT_ANON_KEY;
+          if (!isLikelySupabaseUrl(supabaseUrlResolved)) {
+            console.warn("[ModérScroll] URL Supabase invalide — utilisation du défaut.");
+            supabaseUrlResolved = SUPABASE_DEFAULT_URL;
+          }
+          if (!isLikelyJwtKey(supabaseAnonResolved)) {
+            console.warn("[ModérScroll] Clé anon Supabase invalide — utilisation du défaut.");
+            supabaseAnonResolved = SUPABASE_DEFAULT_ANON_KEY;
+          }
+        }
+
+        const OAUTH_REDIRECT_URL = "com.limitscroll.app://auth/callback";
+        const SUPABASE_AUTH_STORAGE_KEY = "limitscroll-supabase-auth";
+
+        const supabaseAuthStorage = {
+          getItem(key) {
+            try {
+              return localStorage.getItem(key);
+            } catch (_e) {
+              return null;
+            }
+          },
+          setItem(key, value) {
+            try {
+              localStorage.setItem(key, value);
+            } catch (_e) {}
+          },
+          removeItem(key) {
+            try {
+              localStorage.removeItem(key);
+            } catch (_e) {}
+          },
+        };
+
+        function getSupabaseAuthOptions() {
+          const native = (window.Capacitor?.getPlatform?.() || "web") !== "web";
+          return {
+            storage: supabaseAuthStorage,
+            storageKey: SUPABASE_AUTH_STORAGE_KEY,
+            persistSession: true,
+            detectSessionInUrl: !native,
+            flowType: "pkce",
+          };
         }
 
         let supabaseClient = null;
         if (window.supabase?.createClient && supabaseUrlResolved && supabaseAnonResolved) {
           try {
-            supabaseClient = window.supabase.createClient(supabaseUrlResolved, supabaseAnonResolved);
+            supabaseClient = window.supabase.createClient(supabaseUrlResolved, supabaseAnonResolved, {
+              auth: getSupabaseAuthOptions(),
+            });
           } catch (error) {
             console.error("[ModérScroll] Impossible d’initialiser Supabase:", error);
             try {
-              supabaseClient = window.supabase.createClient(SUPABASE_DEFAULT_URL, SUPABASE_DEFAULT_ANON_KEY);
+              supabaseClient = window.supabase.createClient(SUPABASE_DEFAULT_URL, SUPABASE_DEFAULT_ANON_KEY, {
+                auth: getSupabaseAuthOptions(),
+              });
             } catch (_fallbackError) {
               supabaseClient = null;
             }
@@ -2707,7 +2979,11 @@
         }
 
         function getTodayKey() {
-          return new Date().toISOString().slice(0, 10);
+          const d = new Date();
+          const y = d.getFullYear();
+          const m = String(d.getMonth() + 1).padStart(2, "0");
+          const day = String(d.getDate()).padStart(2, "0");
+          return `${y}-${m}-${day}`;
         }
 
         function loadChallengeState() {
@@ -2819,20 +3095,103 @@
             try {
               const parsed = JSON.parse(raw);
               return {
-                nearLimit: parsed.nearLimit !== false,
                 overLimit: parsed.overLimit !== false,
                 challengeSuccess: parsed.challengeSuccess !== false,
                 videoMilestones: parsed.videoMilestones !== false,
+                dailyReset: parsed.dailyReset !== false,
               };
             } catch (_error) {}
           }
-          return { nearLimit: true, overLimit: true, challengeSuccess: true, videoMilestones: true };
+          return {
+            overLimit: true,
+            challengeSuccess: true,
+            videoMilestones: true,
+            dailyReset: true,
+          };
         }
 
         const notificationSettings = loadNotificationSettings();
 
         function saveNotificationSettings() {
           localStorage.setItem(NOTIF_SETTINGS_KEY, JSON.stringify(notificationSettings));
+        }
+
+        function getDailyResetNotificationCopy() {
+          const fr = resolveUiLocale() === "fr";
+          return {
+            title: fr ? "ModérScroll — limites réinitialisées" : "ModérScroll — limits reset",
+            body: fr
+              ? "Nouveau jour : tes compteurs quotidiens sont remis à zéro. Ouvre l'app pour profiter de tes limites."
+              : "New day: your daily counters are reset. Open the app to use today's limits.",
+          };
+        }
+
+        async function cancelDailyResetBackgroundNotification() {
+          const LN = window.Capacitor?.Plugins?.LocalNotifications;
+          if (!LN?.cancel) return;
+          try {
+            await LN.cancel({ notifications: [{ id: DAILY_RESET_SCHEDULED_NOTIF_ID }] });
+          } catch (_e) {}
+        }
+
+        async function syncDailyResetBackgroundNotification() {
+          const platform = window.Capacitor?.getPlatform?.() || "web";
+          const LN = window.Capacitor?.Plugins?.LocalNotifications;
+          await cancelDailyResetBackgroundNotification();
+          if (platform === "web" || !LN?.schedule) return;
+          if (notificationSettings.dailyReset === false) return;
+          if (!(await canPostAppNotifications())) return;
+
+          const { title, body } = getDailyResetNotificationCopy();
+          try {
+            await LN.schedule({
+              notifications: [
+                {
+                  id: DAILY_RESET_SCHEDULED_NOTIF_ID,
+                  title,
+                  body,
+                  schedule: {
+                    on: {
+                      hour: DAILY_RESET_SCHEDULE_HOUR,
+                      minute: DAILY_RESET_SCHEDULE_MINUTE,
+                    },
+                    every: "day",
+                    repeats: true,
+                    allowWhileIdle: true,
+                  },
+                },
+              ],
+            });
+          } catch (error) {
+            console.warn("[ModérScroll] syncDailyResetBackgroundNotification:", error);
+          }
+        }
+
+        let localNotificationsListenersBound = false;
+
+        function initLocalNotificationListeners() {
+          if (localNotificationsListenersBound) return;
+          localNotificationsListenersBound = true;
+          const LN = window.Capacitor?.Plugins?.LocalNotifications;
+          if (!LN?.addListener) return;
+          LN.addListener("localNotificationReceived", (event) => {
+            const id = Number(event?.notification?.id ?? event?.id ?? 0);
+            if (id !== DAILY_RESET_SCHEDULED_NOTIF_ID) return;
+            try {
+              localStorage.setItem(DAILY_RESET_NOTIF_DAY_KEY, getTodayKey());
+            } catch (_e) {}
+          });
+        }
+
+        async function notifyDailyLimitsReset() {
+          if (notificationSettings.dailyReset === false) return;
+          const today = getTodayKey();
+          try {
+            if (localStorage.getItem(DAILY_RESET_NOTIF_DAY_KEY) === today) return;
+            localStorage.setItem(DAILY_RESET_NOTIF_DAY_KEY, today);
+          } catch (_e) {}
+          const { title, body } = getDailyResetNotificationCopy();
+          await notifyUser(title, body);
         }
 
         async function notifyUser(title, body) {
@@ -3098,8 +3457,6 @@
         let cloudSyncQueued = false;
         let lastSyncFailureToastAt = 0;
         let accessibilityBurstInFlight = false;
-        let lastOverLimitNotifAt = 0;
-
         function saveHomePermissionsState() {
           localStorage.setItem(HOME_PERMISSIONS_KEY, JSON.stringify(homePermissionsState));
         }
@@ -3605,7 +3962,7 @@
               if (emailProfile && emailProfile.fullName) return String(emailProfile.fullName);
             } catch (_error) {}
           }
-          return "Pape Doudou";
+          return msg("profile_guest_name");
         }
 
         function getCurrentRank() {
@@ -3666,7 +4023,7 @@
           const planEl = document.getElementById("subscriptionDetailsPlan");
           const startEl = document.getElementById("subscriptionDetailsStartDate");
           const nextEl = document.getElementById("subscriptionDetailsNextPayment");
-          const planKey = localStorage.getItem("limitscrollSubscriptionPlan") || "trial14";
+          const planKey = getSubscriptionPlanKey();
           const planText = subscriptionPlanLabel(planKey);
           if (planEl) planEl.textContent = planText;
           let paidAt = "";
@@ -3689,27 +4046,14 @@
         }
 
         function applyNotificationSettingsUi() {
-          const nearLimitEl = document.getElementById("notifNearLimit");
           const overLimitEl = document.getElementById("notifOverLimit");
           const challengeEl = document.getElementById("notifChallengeSuccess");
           const videoMsEl = document.getElementById("notifVideoMilestones");
-          if (nearLimitEl) nearLimitEl.checked = notificationSettings.nearLimit;
+          const dailyResetEl = document.getElementById("notifDailyReset");
           if (overLimitEl) overLimitEl.checked = notificationSettings.overLimit;
           if (challengeEl) challengeEl.checked = notificationSettings.challengeSuccess;
           if (videoMsEl) videoMsEl.checked = notificationSettings.videoMilestones !== false;
-        }
-
-        function evaluateAndSendUsageNotifications() {
-          const now = Date.now();
-          const activeApp = homeState.activeApp;
-          const limit = homeState.limits[activeApp];
-          const views = homeState.views[activeApp];
-          const ratio = limit > 0 ? views / limit : 0;
-          if (notificationSettings.overLimit && ratio >= 1 && now - lastOverLimitNotifAt > 120000) {
-            lastOverLimitNotifAt = now;
-            notifyUser("Limite atteinte", `Tu as atteint la limite de ${limit} vues sur ${homeState.labels[activeApp]}.`);
-          }
-          evaluateLimitRemainderMilestones();
+          if (dailyResetEl) dailyResetEl.checked = notificationSettings.dailyReset !== false;
         }
 
         function bindProfileActions() {
@@ -3783,14 +4127,14 @@
 
           if (saveNotifBtn) {
             saveNotifBtn.addEventListener("click", async () => {
-              const nearLimitEl = document.getElementById("notifNearLimit");
               const overLimitEl = document.getElementById("notifOverLimit");
               const challengeEl = document.getElementById("notifChallengeSuccess");
               const videoMsEl = document.getElementById("notifVideoMilestones");
-              notificationSettings.nearLimit = Boolean(nearLimitEl && nearLimitEl.checked);
+              const dailyResetEl = document.getElementById("notifDailyReset");
               notificationSettings.overLimit = Boolean(overLimitEl && overLimitEl.checked);
               notificationSettings.challengeSuccess = Boolean(challengeEl && challengeEl.checked);
               notificationSettings.videoMilestones = Boolean(videoMsEl && videoMsEl.checked);
+              notificationSettings.dailyReset = Boolean(dailyResetEl && dailyResetEl.checked);
               saveNotificationSettings();
               try {
                 if ("Notification" in window && Notification.permission !== "granted") {
@@ -3799,6 +4143,7 @@
               } catch (_error) {}
               await syncNotificationPermissionFull();
               await refreshHomePermissionsUi();
+              await syncDailyResetBackgroundNotification();
               const plat = window.Capacitor?.getPlatform?.() || "web";
               if (!homePermissionsState.notifications && plat === "android") {
                 showAppToast(
@@ -3929,6 +4274,16 @@
           }
           if (target) target.classList.add("active");
           const effectiveId = target ? target.id : id;
+          if (effectiveId === "emailAuth") {
+            resetEmailAuthForm();
+            applyDataI18n();
+          }
+          if (effectiveId === "emailOtpVerify") {
+            applyDataI18n();
+            const pending = getPendingEmailConfirm();
+            const target = document.getElementById("emailOtpTargetEmail");
+            if (target && pending?.email) target.textContent = pending.email;
+          }
           if (effectiveId === "home" || effectiveId === "profile" || effectiveId === "notificationDetails") {
             void (async () => {
               await burstRefreshNotificationPermission();
@@ -3952,6 +4307,9 @@
           }
           if (effectiveId === "stats") renderStats();
           if (effectiveId === "challenges") updateChallengeUi();
+          if (effectiveId === "subscription") {
+            void refreshSubscriptionStorePrice();
+          }
           const mainTabBar = document.getElementById("mainTabBar");
           if (mainTabBar) {
             if (mainTabOrder.includes(effectiveId)) {
@@ -4094,6 +4452,18 @@
             },
           },
         };
+
+        (function mergeQuizInsightLocales() {
+          const extra = window.LIMITSCROLL_QUIZ_INSIGHT_EXTRA;
+          if (!extra) return;
+          Object.keys(extra).forEach((screenId) => {
+            if (!quizInsightsByScreen[screenId]) return;
+            Object.keys(extra[screenId]).forEach((loc) => {
+              quizInsightsByScreen[screenId][loc] = extra[screenId][loc];
+            });
+          });
+        })();
+
         let pendingQuizNextScreen = "";
         let pendingQuizSourceScreen = "";
 
@@ -4117,76 +4487,567 @@
           }
         }
 
-        async function bootstrapSupabaseAuth() {
+        const OAUTH_PENDING_REDIRECT_KEY = "limitscrollOAuthRedirect";
+        let oauthCallbackLock = false;
+        const oauthCodesHandled = new Set();
+
+        function parseOAuthCallbackUrl(rawUrl) {
+          if (!rawUrl || typeof rawUrl !== "string") {
+            return { code: "", error: "", accessToken: "", refreshToken: "" };
+          }
+          const queryPart = rawUrl.includes("?") ? rawUrl.split("?")[1].split("#")[0] : "";
+          const hashPart = rawUrl.includes("#") ? rawUrl.split("#").slice(1).join("#") : "";
+          const query = new URLSearchParams(queryPart);
+          const hash = new URLSearchParams(hashPart);
+          return {
+            code: query.get("code") || hash.get("code") || "",
+            error: query.get("error_description") || query.get("error") || hash.get("error_description") || hash.get("error") || "",
+            accessToken: hash.get("access_token") || "",
+            refreshToken: hash.get("refresh_token") || "",
+          };
+        }
+
+        async function sessionAlreadyActive() {
+          if (getBackendAccessToken()) return true;
+          if (!supabaseClient) return false;
+          try {
+            const { data } = await supabaseClient.auth.getSession();
+            return Boolean(data?.session?.access_token);
+          } catch (_e) {
+            return false;
+          }
+        }
+
+        function getAuthRedirectUrl() {
+          const platform = window.Capacitor?.getPlatform?.() || "web";
+          if (platform === "android" || platform === "ios") {
+            return OAUTH_REDIRECT_URL;
+          }
+          try {
+            return window.location.origin + window.location.pathname;
+          } catch (_e) {
+            return OAUTH_REDIRECT_URL;
+          }
+        }
+
+        function getOAuthRedirectUrl() {
+          return getAuthRedirectUrl();
+        }
+
+        function oauthReturnLooksValid(url) {
+          if (!url || typeof url !== "string") return false;
+          return (
+            url.startsWith(OAUTH_REDIRECT_URL) ||
+            url.includes("/auth/mobile-callback") ||
+            url.includes("access_token=") ||
+            url.includes("refresh_token=") ||
+            url.includes("code=") ||
+            url.includes("token_hash=")
+          );
+        }
+
+        async function queueWelcomeEmailAfterAuth() {
+          const token = getBackendAccessToken();
+          if (!token || !navigator.onLine) return;
+          try {
+            await apiRequest(
+              "/api/auth/send-welcome-email",
+              {
+                method: "POST",
+                body: JSON.stringify({ locale: resolveUiLocale() }),
+              },
+              true
+            );
+          } catch (err) {
+            const msg = String(err?.message || err);
+            console.warn("[ModérScroll] E-mail de bienvenue:", msg, "API:", BACKEND_API_BASE);
+            if (/api-404|Cannot POST|welcome_email_not_configured|api-503/i.test(msg)) {
+              console.warn(
+                "[ModérScroll] Déploie le backend sur Render (route /api/auth/send-welcome-email) + RESEND_API_KEY."
+              );
+            }
+          }
+        }
+
+        function notifyAuthSuccess(providerLabel) {
+          const fr = resolveUiLocale() === "fr";
+          setAuthMethodsInfo(fr ? "Connexion validée." : "Signed in.", "info");
+          showAppToast(
+            fr ? "Connecté" : "Signed in",
+            fr ? "Ton compte est relié à ModérScroll." : "Your account is linked.",
+            "success"
+          );
+          updateAuthDoneButtonState();
+          void queueWelcomeEmailAfterAuth();
+        }
+
+        async function completeOAuthIfPending() {
+          if (!supabaseClient) return false;
+          try {
+            const { data, error } = await supabaseClient.auth.getSession();
+            if (error) throw error;
+            if (data?.session?.access_token) {
+              const provider =
+                data.session.user?.app_metadata?.provider ||
+                (Array.isArray(data.session.user?.app_metadata?.providers)
+                  ? data.session.user.app_metadata.providers[0]
+                  : "") ||
+                "google";
+              applySupabaseSession(data.session, provider);
+              await closeOAuthBrowserIfOpen();
+              notifyAuthSuccess(provider);
+              void loadRuntimeStateFromBackend();
+              return true;
+            }
+          } catch (error) {
+            console.error("[ModérScroll] completeOAuthIfPending:", error);
+          }
+          return false;
+        }
+
+        function persistAuthFromSupabaseUser(user, providerHint) {
+          if (!user) return;
+          const provider =
+            providerHint ||
+            user.app_metadata?.provider ||
+            (Array.isArray(user.app_metadata?.providers) ? user.app_metadata.providers[0] : "") ||
+            "google";
+          const meta = {
+            provider,
+            email: user.email || "",
+            completedAt: new Date().toISOString(),
+            userId: user.id || "",
+          };
+          localStorage.setItem("limitscrollAuthMeta", JSON.stringify(meta));
+          if (provider === "email" && user.user_metadata?.full_name) {
+            localStorage.setItem(
+              "limitscrollEmailProfile",
+              JSON.stringify({
+                provider: "email",
+                fullName: String(user.user_metadata.full_name),
+                email: user.email || "",
+                createdAt: meta.completedAt,
+              })
+            );
+          }
+          updateAuthDoneButtonState();
+        }
+
+        function applySupabaseSession(session, providerHint) {
+          if (!session?.access_token) return false;
+          setBackendAccessToken(session.access_token);
+          persistAuthFromSupabaseUser(session.user, providerHint);
+          return true;
+        }
+
+        async function closeOAuthBrowserIfOpen() {
+          try {
+            await window.Capacitor?.Plugins?.Browser?.close?.();
+          } catch (_e) {}
+        }
+
+        async function handleOAuthReturnUrl(url) {
+          if (!url || !oauthReturnLooksValid(url)) return false;
+          if (!(await sessionAlreadyActive())) {
+            if (!supabaseClient) {
+              for (let i = 0; i < 15 && !supabaseClient; i += 1) {
+                await new Promise((r) => window.setTimeout(r, 80));
+              }
+            }
+          }
+          if (!supabaseClient) return false;
+
+          if (await sessionAlreadyActive()) {
+            await closeOAuthBrowserIfOpen();
+            notifyAuthSuccess("google");
+            return true;
+          }
+
+          const parsed = parseOAuthCallbackUrl(url);
+          if (parsed.error) {
+            const fr = resolveUiLocale() === "fr";
+            setAuthMethodsInfo(
+              parsed.error,
+              "error"
+            );
+            return false;
+          }
+
+          if (parsed.code && oauthCodesHandled.has(parsed.code)) {
+            return await sessionAlreadyActive();
+          }
+
+          if (oauthCallbackLock) {
+            for (let i = 0; i < 25; i += 1) {
+              await new Promise((r) => window.setTimeout(r, 120));
+              if (await sessionAlreadyActive()) {
+                await closeOAuthBrowserIfOpen();
+                notifyAuthSuccess("google");
+                return true;
+              }
+              if (!oauthCallbackLock) break;
+            }
+            return await sessionAlreadyActive();
+          }
+
+          oauthCallbackLock = true;
+          try {
+            if (parsed.code) {
+              oauthCodesHandled.add(parsed.code);
+              const exchangeResult = await supabaseClient.auth.exchangeCodeForSession(parsed.code);
+              if (exchangeResult?.error) throw exchangeResult.error;
+              if (exchangeResult?.data?.session) {
+                applySupabaseSession(
+                  exchangeResult.data.session,
+                  exchangeResult.data.user?.app_metadata?.provider || "google"
+                );
+                await closeOAuthBrowserIfOpen();
+                notifyAuthSuccess(exchangeResult.data.user?.app_metadata?.provider || "google");
+                void loadRuntimeStateFromBackend();
+                try {
+                  sessionStorage.removeItem(OAUTH_PENDING_REDIRECT_KEY);
+                } catch (_e) {}
+                return true;
+              }
+            }
+
+            if (parsed.accessToken && parsed.refreshToken) {
+              const { data, error } = await supabaseClient.auth.setSession({
+                access_token: parsed.accessToken,
+                refresh_token: parsed.refreshToken,
+              });
+              if (error) throw error;
+              if (data?.session) {
+                applySupabaseSession(data.session, data.user?.app_metadata?.provider || "google");
+                await closeOAuthBrowserIfOpen();
+                notifyAuthSuccess(data.user?.app_metadata?.provider || "google");
+                void loadRuntimeStateFromBackend();
+                return true;
+              }
+            }
+
+            const queryPart = url.includes("?") ? url.split("?")[1].split("#")[0] : "";
+            const query = new URLSearchParams(queryPart);
+            const tokenHash = query.get("token_hash");
+            const otpType = query.get("type");
+            if (tokenHash && otpType) {
+              const { data, error } = await supabaseClient.auth.verifyOtp({
+                token_hash: tokenHash,
+                type: otpType,
+              });
+              if (error) throw error;
+              if (data?.session) {
+                applySupabaseSession(data.session, "email");
+                await closeOAuthBrowserIfOpen();
+                notifyAuthSuccess("email");
+                void loadRuntimeStateFromBackend();
+                return true;
+              }
+            }
+
+            return await completeOAuthIfPending();
+          } catch (error) {
+            console.error("[ModérScroll] OAuth callback:", error, url);
+            if (await sessionAlreadyActive()) {
+              await closeOAuthBrowserIfOpen();
+              notifyAuthSuccess("google");
+              return true;
+            }
+            const fr = resolveUiLocale() === "fr";
+            const raw = String(error?.message || error || "");
+            setAuthMethodsInfo(
+              /expired|invalid|code verifier|already been used/i.test(raw)
+                ? fr
+                  ? "Session Google interrompue. Ferme l'app complètement, rouvre-la, puis réessaie."
+                  : "Google session interrupted. Force-close the app, reopen, and try again."
+                : fr
+                  ? "Connexion Google incomplète. Vérifie Supabase → URL : com.limitscroll.app://auth/callback"
+                  : "Google sign-in incomplete. Add redirect URL com.limitscroll.app://auth/callback in Supabase.",
+              "error"
+            );
+          } finally {
+            oauthCallbackLock = false;
+          }
+          return false;
+        }
+
+        let oauthResumeHandlersBound = false;
+
+        function initOAuthDeepLinkListener() {
+          if (oauthResumeHandlersBound) return;
+          oauthResumeHandlersBound = true;
+
+          const App = window.Capacitor?.Plugins?.App;
+          const Browser = window.Capacitor?.Plugins?.Browser;
+
+          if (App?.addListener) {
+            App.addListener("appUrlOpen", (event) => {
+              const deepUrl = event?.url || "";
+              window.setTimeout(() => {
+                void handleOAuthReturnUrl(deepUrl);
+              }, 120);
+            });
+            App.addListener("appStateChange", ({ isActive }) => {
+              if (isActive) {
+                startViewsTrackingLoop();
+                burstFlushNativeViewSignals();
+                window.setTimeout(() => {
+                  void completeOAuthIfPending();
+                }, 300);
+              } else {
+                stopViewsTrackingLoop();
+              }
+            });
+          }
+
+          if (Browser?.addListener) {
+            Browser.addListener("browserFinished", () => {
+              window.setTimeout(() => {
+                void completeOAuthIfPending();
+              }, 600);
+            });
+          }
+        }
+
+        async function refreshSupabaseSessionFromStorage() {
           if (!supabaseClient) return;
           try {
             const { data } = await supabaseClient.auth.getSession();
-            const session = data?.session || null;
-            if (session?.access_token) {
-              setBackendAccessToken(session.access_token);
-              const user = session.user || {};
-              localStorage.setItem(
-                "limitscrollAuthMeta",
-                JSON.stringify({
-                  provider: user.app_metadata?.provider || "email",
-                  email: user.email || "",
-                  completedAt: new Date().toISOString(),
-                  userId: user.id || "",
-                })
-              );
+            if (data?.session?.access_token) {
+              applySupabaseSession(data.session);
+            }
+          } catch (_e) {}
+        }
+
+        async function bootstrapSupabaseAuth() {
+          if (!supabaseClient) return;
+          initOAuthDeepLinkListener();
+          try {
+            const { data } = await supabaseClient.auth.getSession();
+            if (data?.session?.access_token) {
+              applySupabaseSession(data.session);
             }
           } catch (_error) {}
           supabaseClient.auth.onAuthStateChange((_event, session) => {
             if (!session?.access_token) {
               setBackendAccessToken("");
+              updateAuthDoneButtonState();
               return;
             }
-            setBackendAccessToken(session.access_token);
-            const user = session.user || {};
-            localStorage.setItem(
-              "limitscrollAuthMeta",
-              JSON.stringify({
-                provider: user.app_metadata?.provider || "email",
-                email: user.email || "",
-                completedAt: new Date().toISOString(),
-                userId: user.id || "",
-              })
-            );
+            applySupabaseSession(session);
           });
+        }
+
+        const PENDING_EMAIL_CONFIRM_KEY = "limitscrollPendingEmailConfirm";
+
+        function getPendingEmailConfirm() {
+          try {
+            const raw = sessionStorage.getItem(PENDING_EMAIL_CONFIRM_KEY);
+            if (!raw) return null;
+            const parsed = JSON.parse(raw);
+            if (!parsed?.email) return null;
+            return parsed;
+          } catch (_e) {
+            return null;
+          }
+        }
+
+        function setPendingEmailConfirm(email, fullName) {
+          sessionStorage.setItem(
+            PENDING_EMAIL_CONFIRM_KEY,
+            JSON.stringify({
+              email: String(email || "").trim(),
+              fullName: String(fullName || "").trim(),
+              createdAt: new Date().toISOString(),
+            })
+          );
+        }
+
+        function clearPendingEmailConfirm() {
+          try {
+            sessionStorage.removeItem(PENDING_EMAIL_CONFIRM_KEY);
+          } catch (_e) {}
+        }
+
+        function openEmailOtpVerifyScreen(email, fullName) {
+          setPendingEmailConfirm(email, fullName);
+          const target = document.getElementById("emailOtpTargetEmail");
+          if (target) target.textContent = String(email || "").trim();
+          const input = document.getElementById("emailOtpCodeInput");
+          if (input) {
+            input.value = "";
+            window.setTimeout(() => input.focus(), 120);
+          }
+          showScreen("emailOtpVerify");
+        }
+
+        function normalizeAuthEmail(email) {
+          return String(email || "").trim().toLowerCase();
+        }
+
+        function isAuthInvalidCredentials(error) {
+          const code = String(error?.code || "").toLowerCase();
+          const message = String(error?.message || error?.msg || "").toLowerCase();
+          return (
+            code === "invalid_credentials" ||
+            /invalid login credentials|invalid email or password|wrong password|incorrect password/i.test(
+              message
+            )
+          );
+        }
+
+        function isAuthEmailNotConfirmed(error) {
+          const code = String(error?.code || "").toLowerCase();
+          const message = String(error?.message || error?.msg || "").toLowerCase();
+          return (
+            code === "email_not_confirmed" ||
+            /not confirmed|confirm your email|email.*confirm|e-mail.*confirm/i.test(message)
+          );
+        }
+
+        /** Envoie un code à 6 chiffres (template Magic Link / OTP). Fallback : template Confirm signup. */
+        async function sendEmailConfirmationCode(email) {
+          if (!supabaseClient) throw new Error("supabase-not-configured");
+          const normalized = normalizeAuthEmail(email);
+          const resendSignup = await supabaseClient.auth.resend({
+            type: "signup",
+            email: normalized,
+          });
+          if (!resendSignup?.error) return;
+          const otpSend = await supabaseClient.auth.signInWithOtp({
+            email: normalized,
+            options: { shouldCreateUser: true },
+          });
+          if (!otpSend?.error) return;
+          throw resendSignup.error || otpSend.error || new Error("email-send-failed");
+        }
+
+        async function resendEmailSignupOtp(email) {
+          return sendEmailConfirmationCode(email);
+        }
+
+        async function verifyEmailSignupOtp(email, otpCode) {
+          if (!supabaseClient) throw new Error("supabase-not-configured");
+          const token = String(otpCode || "").replace(/\D/g, "");
+          if (token.length < EMAIL_OTP_MIN_LEN || token.length > EMAIL_OTP_MAX_LEN) {
+            throw new Error("otp-invalid-length");
+          }
+          const normalized = normalizeAuthEmail(email);
+          const types = ["email", "signup"];
+          let lastError = null;
+          for (const type of types) {
+            const { data, error } = await supabaseClient.auth.verifyOtp({
+              email: normalized,
+              token,
+              type,
+            });
+            if (error) {
+              lastError = error;
+              continue;
+            }
+            if (data?.session?.access_token) {
+              applySupabaseSession(data.session, "email");
+              clearPendingEmailConfirm();
+              return data.user || data.session.user || null;
+            }
+          }
+          throw lastError || new Error("otp-no-session");
         }
 
         async function authenticateEmailWithSupabase(email, password, fullName) {
           if (!supabaseClient) throw new Error("supabase-not-configured");
+          const normalizedEmail = normalizeAuthEmail(email);
+          const normalizedPassword = String(password || "");
+          if (!normalizedEmail || !normalizedPassword) {
+            throw new Error("invalid_credentials");
+          }
           let loginError = null;
           try {
-            const signInResult = await supabaseClient.auth.signInWithPassword({ email, password });
-            if (signInResult?.error) loginError = signInResult.error;
+            const signInResult = await supabaseClient.auth.signInWithPassword({
+              email: normalizedEmail,
+              password: normalizedPassword,
+            });
+            if (signInResult?.error) {
+              loginError = signInResult.error;
+              if (isAuthEmailNotConfirmed(signInResult.error)) {
+                await sendEmailConfirmationCode(normalizedEmail);
+                const err = new Error("email-confirmation-required");
+                err.code = "email-confirmation-required";
+                err.email = normalizedEmail;
+                err.fullName = fullName;
+                throw err;
+              }
+            }
             if (signInResult?.data?.session?.access_token) {
               setBackendAccessToken(signInResult.data.session.access_token);
               return signInResult.data.user || null;
             }
           } catch (error) {
+            if (String(error?.code || "").includes("email-confirmation-required")) throw error;
             loginError = error;
           }
           const signUpResult = await supabaseClient.auth.signUp({
-            email,
-            password,
-            options: { data: { full_name: fullName || "" } },
+            email: normalizedEmail,
+            password: normalizedPassword,
+            options: {
+              data: { full_name: fullName || "" },
+            },
           });
           if (signUpResult?.error) {
+            const signUpCode = String(signUpResult.error.code || "").toLowerCase();
+            if (
+              signUpCode === "user_already_exists" ||
+              /already registered|already exists|already been registered/i.test(
+                String(signUpResult.error.message || "")
+              )
+            ) {
+              throw loginError || signUpResult.error;
+            }
             throw loginError || signUpResult.error;
           }
           const token = signUpResult?.data?.session?.access_token || "";
-          if (token) setBackendAccessToken(token);
-          return signUpResult?.data?.user || null;
+          if (token) {
+            setBackendAccessToken(token);
+            return signUpResult?.data?.user || null;
+          }
+          if (signUpResult?.data?.user) {
+            const identities = signUpResult.data.user.identities || [];
+            if (identities.length === 0 && loginError && isAuthInvalidCredentials(loginError)) {
+              throw loginError;
+            }
+            let emailSent = false;
+            try {
+              await sendEmailConfirmationCode(normalizedEmail);
+              emailSent = true;
+            } catch (sendErr) {
+              console.warn("[ModérScroll] Envoi code OTP:", sendErr);
+            }
+            const err = new Error("email-confirmation-required");
+            err.code = "email-confirmation-required";
+            err.email = normalizedEmail;
+            err.fullName = fullName;
+            err.emailSent = emailSent;
+            throw err;
+          }
+          throw loginError || new Error("signup-failed");
         }
 
         async function authenticateProviderWithSupabase(provider) {
           if (!supabaseClient) return false;
-          const redirectTo = window.location.href;
+          const redirectTo = getAuthRedirectUrl();
+          try {
+            sessionStorage.setItem(OAUTH_PENDING_REDIRECT_KEY, redirectTo);
+          } catch (_e) {}
           const { data, error } = await supabaseClient.auth.signInWithOAuth({
             provider,
-            options: { redirectTo, skipBrowserRedirect: true },
+            options: {
+              redirectTo,
+              skipBrowserRedirect: true,
+              queryParams:
+                provider === "google"
+                  ? { access_type: "offline", prompt: "select_account" }
+                  : undefined,
+            },
           });
           if (error) {
             const raw = String(error.message || error.msg || error || "");
@@ -4202,6 +5063,35 @@
           }
           if (!data?.url) {
             throw new Error("oauth-no-url");
+          }
+          const platform = window.Capacitor?.getPlatform?.() || "web";
+          if (platform === "web") {
+            window.location.assign(data.url);
+            return true;
+          }
+          const Browser = window.Capacitor?.Plugins?.Browser;
+          if (platform === "android") {
+            window.location.assign(data.url);
+            setAuthMethodsInfo(
+              resolveUiLocale() === "fr"
+                ? "Choisis ton compte Google…"
+                : "Choose your Google account…",
+              "info"
+            );
+            return true;
+          }
+          if (Browser?.open) {
+            await Browser.open({
+              url: data.url,
+              toolbarColor: "#050810",
+            });
+            setAuthMethodsInfo(
+              resolveUiLocale() === "fr"
+                ? "Choisis ton compte Google — l'app s'ouvrira automatiquement ensuite."
+                : "Pick your Google account — the app will open automatically after.",
+              "info"
+            );
+            return true;
           }
           window.location.assign(data.url);
           return true;
@@ -4225,21 +5115,13 @@
         }
 
         function hasCompletedAuthentication() {
-          if (getBackendAccessToken()) return true;
-          const authMeta = getAuthMeta();
-          if (!authMeta?.provider) return false;
-          if (authMeta.provider === "email") {
-            return Boolean(localStorage.getItem("limitscrollEmailProfile"));
-          }
-          // In demo mode, selecting Google/Apple acts as completed external auth.
-          return true;
+          return Boolean(getBackendAccessToken());
         }
 
         function updateAuthDoneButtonState() {
           const doneBtn = document.getElementById("authDoneBtn");
           if (!doneBtn) return;
-          const authMeta = getAuthMeta();
-          const enabled = Boolean(authMeta?.provider);
+          const enabled = Boolean(getBackendAccessToken());
           doneBtn.disabled = !enabled;
           if (enabled) {
             doneBtn.className =
@@ -4252,8 +5134,7 @@
 
         function openQuizInsight(screenId, nextScreen) {
           const pack = quizInsightsByScreen[screenId];
-          const locale = resolveUiLocale();
-          const config = pack && pack[locale] ? pack[locale] : pack?.en;
+          const config = pickLocalePack(pack);
           const modal = document.getElementById("quizInsightModal");
           const titleEl = document.getElementById("quizInsightTitle");
           const textEl = document.getElementById("quizInsightText");
@@ -4368,11 +5249,8 @@
           const authBtn = event.target.closest("[data-auth-provider]");
           if (!authBtn) return;
           const provider = authBtn.dataset.authProvider;
-          const authMeta = { provider, startedAt: new Date().toISOString() };
-          localStorage.setItem("limitscrollAuthMeta", JSON.stringify(authMeta));
-          updateAuthDoneButtonState();
           if (provider === "email") {
-            setAuthMethodsInfo("Complète le formulaire email pour finaliser la connexion.", "info");
+            setAuthMethodsInfo(msg("auth_email_flow_hint"), "info");
             showScreen("emailAuth");
             return;
           }
@@ -4382,7 +5260,7 @@
             const raw = String(err?.message || err || "");
             const detail = raw.startsWith("provider-disabled:")
               ? raw.slice("provider-disabled:".length)
-              : "Connexion impossible. Si tu vois une erreur « provider not enabled » sur Supabase, active le fournisseur (Google / Apple) dans le tableau de bord Supabase.";
+              : "Connexion impossible. Si tu vois une erreur « provider not enabled » sur Supabase, active Google dans le tableau de bord Supabase.";
             setAuthMethodsInfo(detail, "error");
           });
         });
@@ -4396,7 +5274,7 @@
         document.addEventListener("click", (event) => {
           const planBtn = event.target.closest("[data-plan]");
           if (!planBtn) return;
-          const selectedPlan = planBtn.dataset.plan || "trial14";
+          const selectedPlan = SUBSCRIPTION_PLAN_KEY;
           localStorage.setItem("limitscrollSubscriptionPlan", selectedPlan);
           updatePaymentPlanLabel(selectedPlan);
           applySubscriptionDetails();
@@ -4428,9 +5306,10 @@
         const CREDIT_LOW_THRESHOLD = 0.2;
         const CREDIT_VERY_LOW_THRESHOLD = 0.05;
         const FREE_CREDITS_TOTAL = 500;
-        /** Plafond de limite quotidienne (vues scroll) par app sans abonnement actif — TikTok, Instagram, YouTube. */
+        /** Plafond limite quotidienne (roue) par app sans Premium — distinct des 500 crédits scroll gratuits. */
         const FREE_TRIAL_SCROLL_LIMIT_CAP = 500;
-        const PAID_LIMIT_CONFIG_MAX = 999;
+        /** Avec Premium : limite quotidienne réglable jusqu’à 1000 vues / app / jour. */
+        const PAID_LIMIT_CONFIG_MAX = 1000;
         const FREE_APP_BONUS = {
           tiktok: 60,
           instagram: 60,
@@ -4464,7 +5343,10 @@
         };
 
         function emptyLimitMilestoneState() {
-          return { day: getTodayKey(), apps: { tiktok: [], instagram: [], youtube: [] } };
+          return {
+            day: getTodayKey(),
+            limitReached: { tiktok: false, instagram: false, youtube: false },
+          };
         }
 
         function loadLimitMilestoneNotifState() {
@@ -4474,13 +5356,11 @@
             const p = JSON.parse(raw);
             const day = getTodayKey();
             if (!p || typeof p !== "object" || p.day !== day) return emptyLimitMilestoneState();
-            const apps = { tiktok: [], instagram: [], youtube: [] };
+            const limitReached = { tiktok: false, instagram: false, youtube: false };
             ["tiktok", "instagram", "youtube"].forEach((app) => {
-              if (Array.isArray(p.apps?.[app])) {
-                apps[app] = p.apps[app].filter((x) => typeof x === "string");
-              }
+              limitReached[app] = Boolean(p.limitReached?.[app]);
             });
-            return { day, apps };
+            return { day, limitReached };
           } catch (_e) {
             return emptyLimitMilestoneState();
           }
@@ -4494,56 +5374,74 @@
           } catch (_e) {}
         }
 
-        function buildRemainderMilestones(limit) {
-          const L = Math.max(0, Math.round(Number(limit) || 0));
-          if (L < 2) return [];
-          const a = Math.floor(L * 0.75);
-          const b = Math.floor(L * 0.5);
-          const c = Math.floor(L * 0.25);
-          return [...new Set([a, b, c])].filter((x) => x > 0 && x < L).sort((a, b) => a - b);
-        }
-
-        function limitMilestoneNotifKey(limit, thresholdRemaining) {
-          return `${limit}-${thresholdRemaining}`;
-        }
-
-        function evaluateLimitRemainderMilestones() {
-          if (!notificationSettings.nearLimit) return;
-          if (!("Notification" in window) || Notification.permission !== "granted") return;
-          if (hasPaidUnlimitedAccess()) return;
-
+        function ensureLimitNotifDayState() {
           const day = getTodayKey();
           if (limitMilestoneNotifState.day !== day) {
             limitMilestoneNotifState = emptyLimitMilestoneState();
           }
+          if (!limitMilestoneNotifState.limitReached) {
+            limitMilestoneNotifState.limitReached = { tiktok: false, instagram: false, youtube: false };
+          }
+        }
 
+        /** Au démarrage : marque la limite déjà atteinte sans renvoyer de notification. */
+        function primeLimitNotifStateFromCurrentUsage() {
+          ensureLimitNotifDayState();
           let dirty = false;
           ["tiktok", "instagram", "youtube"].forEach((app) => {
+            if (!isDailyLimitEnforced(app)) return;
             const limit = Math.max(0, Math.round(Number(homeState.limits[app]) || 0));
-            if (limit < 2) return;
+            if (limit < 1) return;
             const views = Math.max(0, Math.round(Number(homeState.views[app]) || 0));
-            const remaining = Math.max(0, limit - views);
-            const milestones = buildRemainderMilestones(limit);
-            const sentList = limitMilestoneNotifState.apps[app] || [];
-            const sent = new Set(sentList);
-            const toFire = milestones.filter((m) => remaining <= m && !sent.has(limitMilestoneNotifKey(limit, m)));
-            if (toFire.length === 0) return;
-            const label = homeState.labels[app] || app;
-            toFire.forEach((m) => {
-              sent.add(limitMilestoneNotifKey(limit, m));
-              void notifyUser(
-                "ModérScroll — limite du jour",
-                `Sur ${label}, palier atteint : moins de ${m} scroll${m > 1 ? "s" : ""} restants. Il t'en reste ${remaining} sur ${limit} aujourd'hui.`
-              );
-            });
-            limitMilestoneNotifState.apps[app] = [...sent];
-            dirty = true;
+            if (views >= limit && !limitMilestoneNotifState.limitReached[app]) {
+              limitMilestoneNotifState.limitReached[app] = true;
+              dirty = true;
+            }
           });
+          if (dirty) saveLimitMilestoneNotifState();
+        }
 
-          if (dirty) {
-            limitMilestoneNotifState.day = day;
-            saveLimitMilestoneNotifState();
+        async function canPostAppNotifications() {
+          const platform = window.Capacitor?.getPlatform?.() || "web";
+          if (platform !== "web") {
+            const LN = window.Capacitor?.Plugins?.LocalNotifications;
+            if (LN?.checkPermissions) {
+              const perm = await LN.checkPermissions();
+              return perm?.display === "granted";
+            }
           }
+          return "Notification" in window && Notification.permission === "granted";
+        }
+
+        async function evaluateAndSendUsageNotifications() {
+          if (hasPaidUnlimitedAccess() || isScrollLimitsIgnored()) return;
+          if (!(await canPostAppNotifications())) return;
+
+          ensureLimitNotifDayState();
+          let dirty = false;
+
+          for (const app of ["tiktok", "instagram", "youtube"]) {
+            if (!isDailyLimitEnforced(app)) continue;
+            const limit = Math.max(0, Math.round(Number(homeState.limits[app]) || 0));
+            if (limit < 1) continue;
+            const views = Math.max(0, Math.round(Number(homeState.views[app]) || 0));
+            const label = homeState.labels[app] || app;
+
+            if (
+              views >= limit &&
+              notificationSettings.overLimit &&
+              !limitMilestoneNotifState.limitReached[app]
+            ) {
+              limitMilestoneNotifState.limitReached[app] = true;
+              dirty = true;
+              await notifyUser(
+                "Limite atteinte",
+                `Tu as atteint la limite de ${limit} vues sur ${label}.`
+              );
+            }
+          }
+
+          if (dirty) saveLimitMilestoneNotifState();
         }
 
         const statsDayOrder = ["L", "M1", "M2", "J", "V", "S", "D"];
@@ -5014,15 +5912,142 @@
           const apiKey = await getRevenueCatApiKeyForPlatform();
           if (!apiKey) return false;
           try {
-            const configured = await purchases.isConfigured();
-            if (!configured?.isConfigured) {
-              await purchases.configure({ apiKey });
+            if (!revenueCatConfigured) {
+              let needsConfigure = true;
+              if (typeof purchases.isConfigured === "function") {
+                try {
+                  const status = await purchases.isConfigured();
+                  needsConfigure = !status?.isConfigured;
+                } catch (_e) {
+                  needsConfigure = true;
+                }
+              }
+              if (needsConfigure) {
+                await purchases.configure({ apiKey });
+              }
+              revenueCatConfigured = true;
             }
             await syncRevenueCatUserId();
             return true;
-          } catch (_error) {
+          } catch (error) {
+            console.error("[ModérScroll] RevenueCat configure:", error);
+            revenueCatConfigured = false;
             return false;
           }
+        }
+
+        function formatStorePurchaseError(error) {
+          const code = String(error?.code || error?.errorCode || "");
+          const msg = String(error?.message || error?.underlyingErrorMessage || error || "").trim();
+          if (code && msg) return `${code}: ${msg}`;
+          return msg || code || "unknown";
+        }
+
+        function isRevenueCatConfigurationError(errorOrText) {
+          const code = String(errorOrText?.code || errorOrText?.errorCode || "");
+          const msg = String(
+            typeof errorOrText === "string"
+              ? errorOrText
+              : errorOrText?.message || errorOrText?.underlyingErrorMessage || ""
+          );
+          return code === "23" || /configuration/i.test(`${code} ${msg}`);
+        }
+
+        function storeConfigurationHelpFr() {
+          return (
+            "Google Play n'a pas renvoyé l'abonnement « moder_scroll_premium ». " +
+            "Installe l'app depuis la piste test interne Play (pas un APK à la main), connecte un compte testeur Play, " +
+            "vérifie l'abonnement actif dans Play Console et la liaison RevenueCat ↔ Play (offering « default »)."
+          );
+        }
+
+        async function fetchStoreOfferingPackages() {
+          const purchases = getPurchasesPlugin();
+          if (!purchases || getNativePlatform() === "web") {
+            return { packages: [], error: "WEB" };
+          }
+          const ready = await configureRevenueCatIfNeeded();
+          if (!ready) {
+            return { packages: [], error: "NO_RC_KEY" };
+          }
+          try {
+            const offerings = await purchases.getOfferings();
+            const offering = offerings?.all?.[RC_OFFERING_ID] || offerings?.current || null;
+            const packages = Array.isArray(offering?.availablePackages) ? offering.availablePackages : [];
+            const debug = {
+              offeringId: offering?.identifier || null,
+              offeringKeys: offerings?.all ? Object.keys(offerings.all) : [],
+              packageCount: packages.length,
+              productIds: packages.map((p) =>
+                String(p?.product?.identifier || p?.storeProduct?.identifier || p?.identifier || "")
+              ),
+            };
+            console.log("[ModérScroll] RevenueCat offerings:", debug);
+            if (!packages.length) {
+              return { packages: [], error: "NO_PACKAGE", debug };
+            }
+            return { packages, error: null, debug };
+          } catch (error) {
+            return { packages: [], error: formatStorePurchaseError(error), raw: error };
+          }
+        }
+
+        function buildStoreBillingHelpHtml(error, raw, debug) {
+          const lines = [
+            "<p class='font-bold text-orange-200'>Ce n'est pas normal après config Play + RevenueCat. Le bouton reste gris tant que Google Play ne renvoie pas l'abonnement.</p>",
+          ];
+          if (error === "NO_RC_KEY") {
+            lines.push("<p>Clé RevenueCat absente dans l'app. Rebuild : npm run build && npx cap sync android.</p>");
+          } else if (error === "NO_PACKAGE") {
+            lines.push(
+              "<p><strong>Offering vide</strong> : dans RevenueCat, offering « default » (courant) avec le package vers <code>moder_scroll_premium</code>.</p>"
+            );
+            if (debug?.offeringKeys?.length) {
+              lines.push(`<p>Offerings vus : ${debug.offeringKeys.join(", ")}</p>`);
+            }
+          } else if (isRevenueCatConfigurationError(raw || error)) {
+            lines.push(
+              "<p><strong>Erreur 23 / configuration</strong> : Play Console n'envoie pas le produit à RevenueCat.</p>",
+              "<ul class='list-disc pl-4 space-y-1'>",
+              "<li>Play : abonnement <code>moder_scroll_premium</code> + forfait <code>monthly</code> actifs</li>",
+              "<li>Play : ton Gmail en licence de test</li>",
+              "<li>RevenueCat : credentials Google Play (JSON) + produit lié à <code>pro</code></li>",
+              "<li>App installée depuis le lien test interne (pas APK Studio)</li>",
+              "<li>Attendre 2–24 h après création de l'abonnement</li>",
+              "</ul>"
+            );
+          } else if (error) {
+            lines.push(`<p>Détail : ${String(error).slice(0, 200)}</p>`);
+          }
+          return lines.join("");
+        }
+
+        function setSubscriptionStoreBillingUi({ ready, priceText, priceClass, helpHtml, showHelp, showRetry }) {
+          const priceEl = document.getElementById("subscriptionStorePrice");
+          const helpEl = document.getElementById("subscriptionStoreHelp");
+          const retryBtn = document.getElementById("subscriptionStoreRetryBtn");
+          const planBtns = Array.from(document.querySelectorAll("[data-plan]"));
+          storeBillingReady = ready;
+          if (priceEl) {
+            priceEl.textContent = priceText || "";
+            priceEl.className = priceClass || "text-center text-sm text-primary font-bold min-h-[1.25rem]";
+          }
+          if (helpEl) {
+            helpEl.innerHTML = helpHtml || "";
+            helpEl.classList.toggle("hidden", !showHelp);
+          }
+          if (retryBtn) {
+            retryBtn.classList.toggle("hidden", !showRetry);
+          }
+          planBtns.forEach((btn) => {
+            if (ready) {
+              btn.removeAttribute("aria-disabled");
+              btn.classList.remove("opacity-60", "pointer-events-none");
+            } else {
+              btn.setAttribute("aria-disabled", "true");
+              btn.classList.add("opacity-60");
+            }
+          });
         }
 
         async function syncRevenueCatUserId() {
@@ -5036,43 +6061,84 @@
           } catch (_e) {}
         }
 
-        function selectStorePackageForPlan(availablePackages, planKey) {
-          const productId = RC_PRODUCT_IDS[planKey] || RC_PRODUCT_IDS.monthly5;
-          const trialHint = planKey === "trial14";
+        function selectStorePackageForPlan(availablePackages) {
+          const productId = RC_PRODUCT_IDS.monthly5;
+          const basePlan = RC_GOOGLE_BASE_PLAN;
+          const compositeId = `${productId}:${basePlan}`;
           const match = (pkg) => {
             const pid = String(pkg?.product?.identifier || pkg?.storeProduct?.identifier || "");
             const pkgId = String(pkg?.identifier || "");
-            if (pid === productId) return true;
+            if (pid === productId || pid === compositeId) return true;
             if (pid.includes(productId)) return true;
-            if (trialHint && /trial|intro|14/i.test(pid + pkgId)) return true;
-            if (!trialHint && /monthly|mensuel/i.test(pid + pkgId)) return true;
+            if (pid.endsWith(`:${basePlan}`)) return true;
+            if (/monthly|mensuel/i.test(pid + pkgId)) return true;
             return false;
           };
-          return availablePackages.find(match) || availablePackages[0];
+          const monthly = availablePackages.find(match);
+          if (monthly) return monthly;
+          const noTrial = availablePackages.find((pkg) => !/trial|intro|14/i.test(String(pkg?.identifier || "") + String(pkg?.product?.identifier || "")));
+          return noTrial || availablePackages[0];
         }
 
         async function refreshSubscriptionStorePrice() {
-          const priceEl = document.getElementById("subscriptionStorePrice");
-          if (!priceEl || getNativePlatform() === "web") return;
-          const ready = await configureRevenueCatIfNeeded();
-          if (!ready) {
-            priceEl.textContent = "";
+          if (!document.getElementById("subscriptionStorePrice") || getNativePlatform() === "web") return;
+          const configured = await configureRevenueCatIfNeeded();
+          if (!configured) {
+            setSubscriptionStoreBillingUi({
+              ready: false,
+              priceText: "Paiement store : clé RevenueCat manquante dans l'app.",
+              priceClass: "text-center text-sm text-orange-300 font-bold min-h-[1.25rem] px-2",
+              helpHtml: buildStoreBillingHelpHtml("NO_RC_KEY"),
+              showHelp: true,
+              showRetry: true,
+            });
+            return;
+          }
+          const { packages, error, raw, debug } = await fetchStoreOfferingPackages();
+          if (error) {
+            const configErr = isRevenueCatConfigurationError(raw || error);
+            setSubscriptionStoreBillingUi({
+              ready: false,
+              priceText: configErr
+                ? "Store non prêt (Play ↔ RevenueCat). Voir l'aide ci-dessous."
+                : error === "NO_PACKAGE"
+                  ? "Produit introuvable dans l'offering RevenueCat."
+                  : `Store : ${String(error).slice(0, 100)}`,
+              priceClass: "text-center text-xs text-orange-300 font-semibold min-h-[1.25rem] px-2 leading-snug",
+              helpHtml: buildStoreBillingHelpHtml(error, raw, debug),
+              showHelp: true,
+              showRetry: true,
+            });
             return;
           }
           try {
-            const purchases = getPurchasesPlugin();
-            const offerings = await purchases.getOfferings();
-            const offering =
-              offerings?.all?.[RC_OFFERING_ID] || offerings?.current || null;
-            const packages = Array.isArray(offering?.availablePackages) ? offering.availablePackages : [];
-            const pkg = selectStorePackageForPlan(
-              packages,
-              localStorage.getItem("limitscrollSubscriptionPlan") || "monthly5"
-            );
+            const pkg = selectStorePackageForPlan(packages);
             const price = pkg?.product?.priceString || pkg?.storeProduct?.priceString || "";
-            priceEl.textContent = price ? `From ${price} / month via Google Play` : "";
+            const priceLine =
+              resolveUiLocale() === "fr"
+                ? price
+                  ? `${price} / mois via Google Play — prêt`
+                  : "3 CHF / mois via Google Play — prêt"
+                : price
+                  ? `${price} / month via Google Play — ready`
+                  : "CHF 3 / month via Google Play — ready";
+            setSubscriptionStoreBillingUi({
+              ready: true,
+              priceText: priceLine,
+              priceClass: "text-center text-sm text-primary font-bold min-h-[1.25rem]",
+              helpHtml: "",
+              showHelp: false,
+              showRetry: false,
+            });
           } catch (_e) {
-            priceEl.textContent = "";
+            setSubscriptionStoreBillingUi({
+              ready: false,
+              priceText: "Erreur lecture du prix store.",
+              priceClass: "text-center text-xs text-orange-300 font-semibold min-h-[1.25rem] px-2",
+              helpHtml: buildStoreBillingHelpHtml("NO_PACKAGE", null, debug),
+              showHelp: true,
+              showRetry: true,
+            });
           }
         }
 
@@ -5116,9 +6182,18 @@
           return activeSubs.length > 0;
         }
 
+        function refreshLimitsAndCreditsAfterSubscriptionChange() {
+          limitWheelBuilt = false;
+          clampHomeLimitsToConfigMax();
+          buildHomeLimitWheelIfNeeded();
+          updateCreditsUi();
+          updateHomeCard();
+          void syncAndroidReelBlockerPrefs();
+        }
+
         function persistStorePaymentMeta(sourceLabel) {
           const paymentMeta = {
-            plan: localStorage.getItem("limitscrollSubscriptionPlan") || "monthly5",
+            plan: getSubscriptionPlanKey(),
             cardHolder: sourceLabel,
             cardLast4: "STORE",
             paidAt: new Date().toISOString(),
@@ -5126,6 +6201,7 @@
             source: "store",
           };
           localStorage.setItem("limitscrollPaymentMeta", JSON.stringify(paymentMeta));
+          refreshLimitsAndCreditsAfterSubscriptionChange();
         }
 
         async function syncPaidAccessFromStore() {
@@ -5206,7 +6282,8 @@
             homeState.views[app] = Number.isFinite(state?.views?.[app]) ? Math.max(0, Math.round(state.views[app])) : homeState.views[app];
             homeState.likes[app] = Number.isFinite(state?.likes?.[app]) ? Math.max(0, Math.round(state.likes[app])) : homeState.likes[app];
             homeState.reposts[app] = Number.isFinite(state?.reposts?.[app]) ? Math.max(0, Math.round(state.reposts[app])) : homeState.reposts[app];
-            homeState.lockUntil[app] = Number.isFinite(state?.lock_until?.[app]) ? Math.max(0, Math.round(state.lock_until[app])) : homeState.lockUntil[app];
+            const remoteLock = Number.isFinite(state?.lock_until?.[app]) ? Math.max(0, Math.round(state.lock_until[app])) : 0;
+            homeState.lockUntil[app] = remoteLock > Date.now() ? remoteLock : 0;
 
             creditsState.appBonus[app] = Number.isFinite(state?.app_bonus?.[app]) ? Math.max(0, Math.round(state.app_bonus[app])) : creditsState.appBonus[app];
             creditsState.appBonusInitial[app] = Number.isFinite(state?.app_bonus_initial?.[app])
@@ -5317,7 +6394,10 @@
               "/api/views/consume",
               {
                 method: "POST",
-                body: JSON.stringify({ app }),
+                body: JSON.stringify({
+                  app,
+                  premium_active: hasPaidUnlimitedAccess(),
+                }),
               },
               true
             );
@@ -5337,7 +6417,7 @@
           for (const app of apps) {
             const limit = Math.max(0, Number(homeState.limits[app]) || 0);
             const views = Math.max(0, Number(homeState.views[app]) || 0);
-            const blocked = !unlimited && !isScrollLimitsIgnored() && limit > 0 && views >= limit;
+            const blocked = isDailyLimitEnforced(app) && limit > 0 && views >= limit;
             try {
               await ReelBlocker.setBlocked({ app, blocked });
             } catch (_error) {}
@@ -5638,6 +6718,12 @@
           return Number(homeState.lockUntil[app] || 0) > Date.now();
         }
 
+        /** Limite quotidienne + blocage natif : uniquement après « Verrouiller la limite ». */
+        function isDailyLimitEnforced(app) {
+          if (isScrollLimitsIgnored() || hasPaidUnlimitedAccess()) return false;
+          return isLimitLocked(app);
+        }
+
         function formatRemainingLock(ms) {
           const safe = Math.max(0, ms);
           const hours = Math.floor(safe / (60 * 60 * 1000));
@@ -5645,12 +6731,26 @@
           return `${hours}h${String(mins).padStart(2, "0")}`;
         }
 
+        function clearExpiredLimitLocks() {
+          let changed = false;
+          ["tiktok", "instagram", "youtube"].forEach((app) => {
+            const until = Number(homeState.lockUntil[app] || 0);
+            if (until > 0 && until <= Date.now()) {
+              homeState.lockUntil[app] = 0;
+              changed = true;
+            }
+          });
+          if (changed) saveHomeUsageState();
+          return changed;
+        }
+
         function resetHomeViewsIfNeeded() {
           const bypassWasReset = normalizeScrollBypassForNewDay();
+          clearExpiredLimitLocks();
           const today = getTodayKey();
           if (homeState.lastResetDay === today) {
             if (bypassWasReset) updateProfileIgnoreLimitsUi();
-            return;
+            return false;
           }
           const history = getStatsHistory();
           history[homeState.lastResetDay] = {
@@ -5664,10 +6764,13 @@
             homeState.views[app] = 0;
             homeState.likes[app] = 0;
             homeState.reposts[app] = 0;
+            homeState.lockUntil[app] = 0;
           });
           limitMilestoneNotifState = emptyLimitMilestoneState();
           saveLimitMilestoneNotifState();
           saveHomeUsageState();
+          void notifyDailyLimitsReset();
+          return true;
         }
 
         const LIMIT_WHEEL_ITEM_H = 56;
@@ -5843,28 +6946,25 @@
           }
           if (locked) {
             const remainingMs = homeState.lockUntil[app] - Date.now();
-            infoEl.textContent = `Limite verrouillée encore ${formatRemainingLock(remainingMs)}.`;
+            const lim = homeState.limits[app];
+            const v = homeState.views[app];
+            const rest = Math.max(0, lim - v);
+            infoEl.textContent = `Limite active (${rest} restantes) — verrouillée encore ${formatRemainingLock(remainingMs)}.`;
             infoEl.className = "text-xs font-bold text-orange-300 text-center leading-snug";
             return;
           }
-          if (pending !== confirmed) {
-            infoEl.textContent =
-              "Nouvelle limite choisie : appuie sur « Verrouiller les Apps pour 24h » pour l’appliquer.";
-            infoEl.className = "text-xs font-bold text-primary text-center leading-snug";
-            return;
-          }
-          infoEl.textContent =
-            "Appuie sur « Verrouiller les Apps pour 24h » pour figer la limite actuelle.";
+          infoEl.textContent = msg("limit_pending_hint");
           infoEl.className = "text-xs font-bold text-primary text-center leading-snug";
         }
 
         function updateHomeCard() {
           resetHomeViewsIfNeeded();
           const app = homeState.activeApp;
-          const limit = homeState.limits[app];
+          const limitActive = isDailyLimitEnforced(app);
+          const limit = limitActive ? homeState.limits[app] : homeState.pendingLimits[app];
           const pendingLimit = homeState.pendingLimits[app];
           const views = homeState.views[app];
-          const remaining = Math.max(0, limit - views);
+          const remaining = limitActive ? Math.max(0, homeState.limits[app] - views) : null;
           const appNameEl = document.getElementById("homeAppName");
           const sessionEl = document.getElementById("homeSessionText");
           const limitEl = document.getElementById("homeLimitValue");
@@ -5877,13 +6977,16 @@
           if (limitEl) {
             limitEl.textContent = String(pendingLimit);
           }
-          if (viewsEl) viewsEl.textContent = String(views);
-          if (remainingEl) remainingEl.textContent = String(remaining);
-          if (statsViewsEl) statsViewsEl.textContent = String(views);
+          if (viewsEl) viewsEl.textContent = limitActive ? String(views) : "0";
+          if (remainingEl) {
+            remainingEl.textContent = limitActive ? String(remaining) : msg("limit_remaining_pending");
+          }
+          if (statsViewsEl) statsViewsEl.textContent = limitActive ? String(views) : "0";
           if (statsAppEl) statsAppEl.textContent = homeState.labels[app];
+          updateAppSelection();
           updateHomeLimitControls();
           updateCreditsUi();
-          evaluateAndSendUsageNotifications();
+          void evaluateAndSendUsageNotifications();
         }
 
         function updateAppSelection() {
@@ -5891,10 +6994,15 @@
           appButtons.forEach((btn) => {
             const app = btn.dataset.app;
             const selected = app === homeState.activeApp;
-            btn.classList.toggle("ring-2", selected);
-            btn.classList.toggle("ring-[#007BFF]/55", selected);
-            btn.classList.toggle("border-[#007BFF]/45", selected);
-            btn.classList.toggle("border-white/8", !selected);
+            btn.classList.toggle("home-app-btn--selected", selected);
+            btn.setAttribute("aria-pressed", selected ? "true" : "false");
+            const label = btn.querySelector(".home-app-btn-label");
+            if (label) {
+              label.classList.toggle("font-semibold", selected);
+              label.classList.toggle("font-medium", !selected);
+              label.classList.toggle("text-[#E0E0E0]", selected);
+              label.classList.toggle("text-muted-foreground", !selected);
+            }
           });
         }
 
@@ -5975,19 +7083,15 @@
               );
               homeState.pendingLimits[app] = nextLimit;
               const lockUntilMs = Date.now() + LIMIT_LOCK_MS;
-              await withGlobalLoading("Verrouillage 24 h...", async () => {
+              await withGlobalLoading("Verrouillage de la limite...", async () => {
                 const remoteState = await updateLimitRemotely(app, nextLimit);
                 if (remoteState) {
                   applyRuntimeStatePayload(remoteState);
                 }
                 homeState.limits[app] = nextLimit;
                 homeState.pendingLimits[app] = nextLimit;
-                if (homeState.views[app] > nextLimit) {
-                  homeState.views[app] = nextLimit;
-                }
-                if (!isLimitLocked(app)) {
-                  homeState.lockUntil[app] = lockUntilMs;
-                }
+                homeState.views[app] = 0;
+                homeState.lockUntil[app] = lockUntilMs;
                 saveHomeUsageState();
                 saveCreditsState();
                 queueCloudSync("limit-updated");
@@ -5995,7 +7099,7 @@
               void syncAndroidReelBlockerPrefs();
               showAppToast(
                 "Limite confirmée",
-                `${homeState.labels[app]} verrouillée pendant 24 heures.`,
+                `Limite ${homeState.labels[app]} verrouillée — le décompte est actif.`,
                 "success"
               );
               updateHomeCard();
@@ -6006,14 +7110,33 @@
         /**
          * @returns {Promise<boolean>} true = on peut traiter un autre signal pour cette app dans le même flush ; false = arrêter (limite / crédits).
          */
-        async function consumePendingViewsForApp(app) {
+        async function consumePendingViewsForApp(app, options = {}) {
           if (!["tiktok", "instagram", "youtube"].includes(app)) {
             return true;
           }
           resetHomeViewsIfNeeded();
+          const localOnly = Boolean(options.localOnly);
+
+          if (!isDailyLimitEnforced(app)) {
+            if (!canConsumeVideo(app)) {
+              enforceCreditsPaywall();
+              updateCreditsUi();
+              return false;
+            }
+            if (!consumeOneCredit(app)) {
+              enforceCreditsPaywall();
+              updateCreditsUi();
+              return false;
+            }
+            saveCreditsState();
+            notifyCreditThresholds();
+            updateCreditsUi();
+            return true;
+          }
+
           const lim = Math.max(0, Number(homeState.limits[app]) || 0);
           const v = Math.max(0, Number(homeState.views[app]) || 0);
-          if (!isScrollLimitsIgnored() && !hasPaidUnlimitedAccess() && lim > 0 && v >= lim) {
+          if (lim > 0 && v >= lim) {
             return false;
           }
           if (!canConsumeVideo(app)) {
@@ -6022,7 +7145,7 @@
             return false;
           }
           const runLocalConsumeForApp = () => {
-            if (!isScrollLimitsIgnored() && homeState.views[app] >= homeState.limits[app]) {
+            if (homeState.views[app] >= homeState.limits[app]) {
               return false;
             }
             const consumed = consumeOneCredit(app);
@@ -6040,9 +7163,11 @@
             if (getCreditsRemainingTotal() <= 0) {
               enforceCreditsPaywall();
             }
-            if (isScrollLimitsIgnored()) return true;
             return !(homeState.views[app] >= homeState.limits[app]);
           };
+          if (localOnly) {
+            return runLocalConsumeForApp();
+          }
           try {
             const remoteResult = await consumeOneViewRemotely(app);
             if (!remoteResult) {
@@ -6070,6 +7195,8 @@
         }
 
         let nativeFlushInFlight = false;
+        const VIEWS_FLUSH_INTERVAL_MS = 700;
+
         async function flushNativeViewSignalsToBackend() {
           const platform = window.Capacitor?.getPlatform?.() || "web";
           if (platform !== "android") {
@@ -6083,6 +7210,7 @@
             return;
           }
           nativeFlushInFlight = true;
+          let hadViews = false;
           try {
             const result = await ReelBlocker.consumePendingViewSignals();
             const counts = result?.counts || {};
@@ -6093,11 +7221,19 @@
                 continue;
               }
               n = Math.min(n, 500);
+              hadViews = true;
               for (let i = 0; i < n; i += 1) {
-                const cont = await consumePendingViewsForApp(app);
+                const cont = await consumePendingViewsForApp(app, { localOnly: true });
                 if (!cont) {
                   break;
                 }
+              }
+            }
+            if (hadViews) {
+              updateHomeCard();
+              updateCreditsUi();
+              if (getBackendAccessToken()) {
+                queueCloudSync("native-views-flushed");
               }
             }
           } catch (_e) {
@@ -6108,19 +7244,32 @@
           }
         }
 
-        function startViewsTrackingLoop() {
+        function stopViewsTrackingLoop() {
           if (autoViewsIntervalId) {
-            return;
+            window.clearInterval(autoViewsIntervalId);
+            autoViewsIntervalId = null;
           }
+        }
+
+        function startViewsTrackingLoop() {
+          stopViewsTrackingLoop();
           const platform = window.Capacitor?.getPlatform?.() || "web";
           if (platform === "android") {
             void flushNativeViewSignalsToBackend();
             autoViewsIntervalId = window.setInterval(() => {
-              void flushNativeViewSignalsToBackend();
-            }, 2500);
+              if (document.visibilityState === "visible" && !document.hidden) {
+                void flushNativeViewSignalsToBackend();
+              }
+            }, VIEWS_FLUSH_INTERVAL_MS);
             return;
           }
           /* Navigateur : pas de détection scroll native ; le décompte passe par l’app Android ou actions manuelles. */
+        }
+
+        function burstFlushNativeViewSignals() {
+          void flushNativeViewSignalsToBackend();
+          window.setTimeout(() => void flushNativeViewSignalsToBackend(), 120);
+          window.setTimeout(() => void flushNativeViewSignalsToBackend(), 350);
         }
 
         const tabButtons = Array.from(document.querySelectorAll(".tab-btn"));
@@ -6273,6 +7422,88 @@
         applyNotificationSettingsUi();
         applySubscriptionDetails();
         const emailAuthForm = document.getElementById("emailAuthForm");
+        const emailOtpForm = document.getElementById("emailOtpForm");
+        const emailOtpResendBtn = document.getElementById("emailOtpResendBtn");
+        const emailOtpCodeInput = document.getElementById("emailOtpCodeInput");
+
+        const emailAuthPasswordToggle = document.getElementById("emailAuthPasswordToggle");
+        if (emailAuthPasswordToggle) {
+          emailAuthPasswordToggle.addEventListener("click", () => {
+            const input = document.getElementById("emailAuthPasswordInput");
+            if (!input) return;
+            setEmailPasswordVisible(input.type === "password");
+          });
+        }
+
+        if (emailOtpCodeInput) {
+          emailOtpCodeInput.addEventListener("input", () => {
+            emailOtpCodeInput.value = emailOtpCodeInput.value
+              .replace(/\D/g, "")
+              .slice(0, EMAIL_OTP_MAX_LEN);
+          });
+        }
+
+        if (emailOtpResendBtn) {
+          emailOtpResendBtn.addEventListener("click", () => {
+            const pending = getPendingEmailConfirm();
+            if (!pending?.email) {
+              showScreen("emailAuth");
+              return;
+            }
+            const fr = resolveUiLocale() === "fr";
+            withGlobalLoading(fr ? "Envoi du code…" : "Sending code…", async () => {
+              await resendEmailSignupOtp(pending.email);
+            })
+              .then(() => {
+                showAppToast(msg("auth_otp_sent_toast"), msg("auth_otp_sent_body"), "info");
+              })
+              .catch(() => {
+                showAppToast(
+                  fr ? "Envoi impossible" : "Could not send",
+                  fr ? "Réessaie dans quelques secondes." : "Try again in a few seconds.",
+                  "error"
+                );
+              });
+          });
+        }
+
+        if (emailOtpForm) {
+          emailOtpForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const pending = getPendingEmailConfirm();
+            if (!pending?.email) {
+              showScreen("emailAuth");
+              return;
+            }
+            const otp = String(new FormData(emailOtpForm).get("otp") || "").replace(/\D/g, "");
+            const fr = resolveUiLocale() === "fr";
+            withGlobalLoading(fr ? "Vérification…" : "Verifying…", async () => {
+              const user = await verifyEmailSignupOtp(pending.email, otp);
+              const emailProfile = {
+                provider: "email",
+                fullName: pending.fullName || user?.user_metadata?.full_name || "",
+                email: pending.email,
+                createdAt: new Date().toISOString(),
+              };
+              localStorage.setItem("limitscrollEmailProfile", JSON.stringify(emailProfile));
+              persistAuthFromSupabaseUser(user, "email");
+              await loadRuntimeStateFromBackend();
+              queueCloudSync("email-otp-verified");
+            })
+              .then(() => {
+                notifyAuthSuccess("email");
+                showScreen("home");
+              })
+              .catch(() => {
+                showAppToast(
+                  fr ? "Code invalide" : "Invalid code",
+                  msg("auth_otp_invalid"),
+                  "error"
+                );
+              });
+          });
+        }
+
         if (emailAuthForm) {
           emailAuthForm.addEventListener("submit", (event) => {
             event.preventDefault();
@@ -6284,20 +7515,64 @@
               createdAt: new Date().toISOString(),
             };
             const password = String(formData.get("password") || "");
+            emailProfile.email = normalizeAuthEmail(emailProfile.email);
             withGlobalLoading("Connexion du compte...", async () => {
-              await authenticateEmailWithSupabase(emailProfile.email, password, emailProfile.fullName);
-              localStorage.setItem("limitscrollEmailProfile", JSON.stringify(emailProfile));
-              localStorage.setItem(
-                "limitscrollAuthMeta",
-                JSON.stringify({ ...emailProfile, provider: "email", completedAt: new Date().toISOString() })
+              const user = await authenticateEmailWithSupabase(
+                emailProfile.email,
+                password,
+                emailProfile.fullName
               );
+              if (!getBackendAccessToken()) {
+                const err = new Error("email-confirmation-required");
+                err.code = "email-confirmation-required";
+                err.email = emailProfile.email;
+                err.fullName = emailProfile.fullName;
+                throw err;
+              }
+              localStorage.setItem("limitscrollEmailProfile", JSON.stringify(emailProfile));
+              persistAuthFromSupabaseUser(user, "email");
               await loadRuntimeStateFromBackend();
               queueCloudSync("email-auth-created");
-            }).then(() => {
-              showScreen("home");
-            }).catch(() => {
-              showAppToast("Connexion échouée", "Impossible de se connecter. Vérifie email/mot de passe.", "error");
-            });
+            })
+              .then(() => {
+                showScreen("home");
+              })
+              .catch((err) => {
+                if (String(err?.code || err?.message || "").includes("email-confirmation")) {
+                  const email = err?.email || emailProfile.email;
+                  const fullName = err?.fullName || emailProfile.fullName;
+                  const fr = resolveUiLocale() === "fr";
+                  showAppToast(
+                    fr ? "Confirme ton e-mail" : "Confirm your email",
+                    err?.emailSent === false
+                      ? fr
+                        ? "Impossible d’envoyer le code (vérifie les spams ou réessaie). Tu peux aussi utiliser « Continuer avec Google »."
+                        : "Could not send the code (check spam or retry). You can also use “Continue with Google”."
+                      : fr
+                        ? "Saisis le code reçu par e-mail (6 à 8 chiffres)."
+                        : "Enter the code from your email (6–8 digits).",
+                    err?.emailSent === false ? "error" : "info"
+                  );
+                  openEmailOtpVerifyScreen(email, fullName);
+                  return;
+                }
+                const rawMsg = String(err?.message || "");
+                const fr = resolveUiLocale() === "fr";
+                const invalidCreds =
+                  isAuthInvalidCredentials(err) ||
+                  /invalid|credentials|password/i.test(rawMsg);
+                showAppToast(
+                  fr ? "Connexion échouée" : "Sign-in failed",
+                  invalidCreds
+                    ? fr
+                      ? "E-mail ou mot de passe incorrect. Si tu t’es inscrit avec Google, utilise le bouton Google."
+                      : "Wrong email or password. If you signed up with Google, use the Google button."
+                    : fr
+                      ? "Vérifie ta connexion internet ou réessaie dans quelques minutes."
+                      : "Check your internet connection or try again in a few minutes.",
+                  "error"
+                );
+              });
           });
         }
         const buyWithStoreBtn = document.getElementById("buyWithStoreBtn");
@@ -6306,17 +7581,17 @@
         async function activateDemoPayment() {
           await withGlobalLoading("Activation de l'abonnement...", async () => {
             const paymentMeta = {
-              plan: localStorage.getItem("limitscrollSubscriptionPlan") || "trial14",
+              plan: getSubscriptionPlanKey(),
               cardHolder: "Mode test",
               cardLast4: "TEST",
               paidAt: new Date().toISOString(),
               testMode: true,
             };
             localStorage.setItem("limitscrollPaymentMeta", JSON.stringify(paymentMeta));
+            refreshLimitsAndCreditsAfterSubscriptionChange();
             queueCloudSync("payment-saved-test");
             await new Promise((resolve) => setTimeout(resolve, 320));
           });
-          void syncAndroidReelBlockerPrefs();
           applySubscriptionDetails();
           showAppToast("Abonnement activé", "Mode test activé sans carte bancaire.", "success");
           showScreen("home");
@@ -6326,6 +7601,15 @@
           const purchases = getPurchasesPlugin();
           if (!purchases || getNativePlatform() === "web") {
             showAppToast("Mode web", "Sur navigateur, utilise le bouton mode test. Le paiement réel fonctionne sur Android/iOS.", "info");
+            return;
+          }
+          if (storeBillingReady === false) {
+            await refreshSubscriptionStorePrice();
+            showAppToast(
+              "Store non prêt",
+              "Google Play n'a pas encore renvoyé l'abonnement. Suis l'aide orange sous le bouton, puis Réessayer.",
+              "error"
+            );
             return;
           }
           const ready = await configureRevenueCatIfNeeded();
@@ -6338,17 +7622,24 @@
             return;
           }
           await withGlobalLoading("Connexion au store...", async () => {
-            const offerings = await purchases.getOfferings();
-            const currentOffering =
-              offerings?.all?.[RC_OFFERING_ID] || offerings?.current || null;
-            const availablePackages = Array.isArray(currentOffering?.availablePackages)
-              ? currentOffering.availablePackages
-              : [];
-            if (availablePackages.length === 0) {
+            const { packages: availablePackages, error: fetchError, raw: fetchRaw } =
+              await fetchStoreOfferingPackages();
+            if (fetchError === "NO_RC_KEY") {
+              throw new Error("NO_RC_KEY");
+            }
+            if (fetchError === "NO_PACKAGE") {
               throw new Error("NO_PACKAGE");
             }
-            const planKey = localStorage.getItem("limitscrollSubscriptionPlan") || "monthly5";
-            const selectedPackage = selectStorePackageForPlan(availablePackages, planKey);
+            if (fetchError && isRevenueCatConfigurationError(fetchRaw || fetchError)) {
+              throw new Error("RC_CONFIGURATION");
+            }
+            if (fetchError || !availablePackages.length) {
+              throw new Error(fetchError || "NO_PACKAGE");
+            }
+            const selectedPackage = selectStorePackageForPlan(availablePackages);
+            if (!selectedPackage) {
+              throw new Error("NO_PACKAGE");
+            }
             const purchaseResult = await purchases.purchasePackage({ aPackage: selectedPackage });
             const customerInfo = purchaseResult?.customerInfo || null;
             if (customerInfoHasProAccess(customerInfo)) {
@@ -6366,14 +7657,33 @@
             showScreen("home");
           }).catch((error) => {
             const code = String(error?.message || "");
-            if (code === "NO_PACKAGE") {
-              showAppToast("Produit introuvable", "Aucun abonnement disponible côté store/RevenueCat.", "error");
-            } else if (code.includes("UserCancelledError")) {
+            const detail = formatStorePurchaseError(error);
+            if (code === "NO_RC_KEY") {
+              showAppToast(
+                "Configuration paiement",
+                "Clé RevenueCat manquante. Rebuild l'app (npm run build && npx cap sync android).",
+                "error"
+              );
+            } else if (code === "RC_CONFIGURATION" || isRevenueCatConfigurationError(error) || isRevenueCatConfigurationError(detail)) {
+              showAppToast("Configuration Google Play", storeConfigurationHelpFr(), "error");
+            } else if (code === "NO_PACKAGE") {
+              showAppToast(
+                "Produit introuvable",
+                "Vérifie Play Console + RevenueCat (offering default, produit moder_scroll_premium).",
+                "error"
+              );
+            } else if (code.includes("UserCancelled") || code.includes("PURCHASE_CANCELLED")) {
               showAppToast("Paiement annulé", "Achat annulé.", "info");
             } else if (code === "NO_ENTITLEMENT") {
-              showAppToast("Accès non activé", "Achat fait mais entitlement non actif. Vérifie RevenueCat.", "error");
+              showAppToast("Accès non activé", "Achat fait mais entitlement pro non actif dans RevenueCat.", "error");
+            } else if (/plugin|not implemented|undefined/i.test(detail)) {
+              showAppToast(
+                "Store indisponible",
+                "Réinstalle l'app depuis Google Play (test interne) pour activer la facturation.",
+                "error"
+              );
             } else {
-              showAppToast("Paiement échoué", "Impossible de terminer l'achat store.", "error");
+              showAppToast("Paiement échoué", detail.slice(0, 180) || "Impossible de terminer l'achat store.", "error");
             }
           });
         }
@@ -6427,6 +7737,12 @@
         if (subscriptionRestoreBtn) {
           subscriptionRestoreBtn.addEventListener("click", restoreStorePurchases);
         }
+        const subscriptionStoreRetryBtn = document.getElementById("subscriptionStoreRetryBtn");
+        if (subscriptionStoreRetryBtn) {
+          subscriptionStoreRetryBtn.addEventListener("click", () => {
+            void refreshSubscriptionStorePrice();
+          });
+        }
         const subscriptionDetailsRestoreBtn = document.getElementById("subscriptionDetailsRestoreBtn");
         if (subscriptionDetailsRestoreBtn) {
           subscriptionDetailsRestoreBtn.addEventListener("click", restoreStorePurchases);
@@ -6466,9 +7782,10 @@
             applyPaymentScreenForPlatform();
             void refreshSubscriptionStorePrice();
             resetHomeViewsIfNeeded();
+            primeLimitNotifStateFromCurrentUsage();
             void syncAndroidReelBlockerPrefs();
             updateCreditsUi();
-            updatePaymentPlanLabel(localStorage.getItem("limitscrollSubscriptionPlan") || "trial14");
+            updatePaymentPlanLabel(getSubscriptionPlanKey());
             normalizeChallengeDates();
             bindNetworkWatchers();
             applyDataI18n();
@@ -6477,26 +7794,43 @@
               updateMainTabBar(mainTabOrder[__activeMainIdx]);
             }
             await refreshHomePermissionsUi();
+            initLocalNotificationListeners();
+            void syncDailyResetBackgroundNotification();
             document.addEventListener("visibilitychange", () => {
               if (document.visibilityState === "visible") {
+                startViewsTrackingLoop();
                 normalizeScrollBypassForNewDay();
+                const didDailyReset = resetHomeViewsIfNeeded();
+                if (didDailyReset) {
+                  updateHomeCard();
+                  updateCreditsUi();
+                  void syncAndroidReelBlockerPrefs();
+                }
+                burstFlushNativeViewSignals();
+                void refreshSupabaseSessionFromStorage();
+                void completeOAuthIfPending();
                 void (async () => {
                   await burstRefreshNotificationPermission();
                   await refreshHomePermissionsUi();
+                  await syncDailyResetBackgroundNotification();
                   await burstRefreshAndroidAccessibilityGrant();
                   const notifScreen = document.getElementById("notificationDetails");
                   if (notifScreen && notifScreen.classList.contains("active")) {
                     applyNotificationSettingsUi();
                   }
-                  void flushNativeViewSignalsToBackend();
                 })();
+              } else {
+                stopViewsTrackingLoop();
               }
             });
             const resumeHomePermissionsRefresh = () => {
               if (document.visibilityState !== "visible" || document.hidden) return;
+              startViewsTrackingLoop();
+              burstFlushNativeViewSignals();
               void (async () => {
                 await burstRefreshNotificationPermission();
                 await refreshHomePermissionsUi();
+                await syncDailyResetBackgroundNotification();
                 await burstRefreshAndroidAccessibilityGrant();
                 const notifScreen = document.getElementById("notificationDetails");
                 if (notifScreen && notifScreen.classList.contains("active")) {

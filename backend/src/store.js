@@ -85,13 +85,19 @@ async function getOrCreateRuntimeState(userId) {
     .maybeSingle();
   if (error) throw error;
   if (!data) return insertDefaultState(userId);
-  return normalizeState(data);
+  const loaded = normalizeState(data);
+  const maintained = maintainRuntimeState(loaded);
+  if (runtimeStateSnapshot(loaded) !== runtimeStateSnapshot(maintained)) {
+    return saveRuntimeState(userId, maintained);
+  }
+  return maintained;
 }
 
 async function saveRuntimeState(userId, state) {
   assertAdminClient();
+  const maintained = maintainRuntimeState(normalizeState(state));
   const payload = {
-    ...state,
+    ...maintained,
     user_id: userId,
     updated_at: new Date().toISOString(),
   };
@@ -176,16 +182,46 @@ function getTodayKey() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function clearExpiredLimitLocks(state) {
+  const now = Date.now();
+  const lock_until = { ...state.lock_until };
+  let changed = false;
+  for (const app of APPS) {
+    const until = lock_until[app];
+    if (until > 0 && until <= now) {
+      lock_until[app] = 0;
+      changed = true;
+    }
+  }
+  return changed ? { ...state, lock_until } : state;
+}
+
 function resetIfNewDay(state) {
   const today = getTodayKey();
-  if (state.last_reset_day === today) return state;
+  const withExpiredCleared = clearExpiredLimitLocks(state);
+  if (withExpiredCleared.last_reset_day === today) return withExpiredCleared;
   return {
-    ...state,
+    ...withExpiredCleared,
     last_reset_day: today,
     views: { ...DEFAULT_STATE.views },
     likes: { ...DEFAULT_STATE.likes },
     reposts: { ...DEFAULT_STATE.reposts },
+    lock_until: { ...DEFAULT_STATE.lock_until },
   };
+}
+
+function maintainRuntimeState(state) {
+  return resetIfNewDay(state);
+}
+
+function runtimeStateSnapshot(state) {
+  return JSON.stringify({
+    last_reset_day: state.last_reset_day,
+    views: state.views,
+    likes: state.likes,
+    reposts: state.reposts,
+    lock_until: state.lock_until,
+  });
 }
 
 function canConsumeVideo(state, app) {
@@ -210,9 +246,11 @@ function consumeCredit(state, app) {
   return { state: next, consumed: true };
 }
 
+const LIMIT_MAX = 1000;
+
 function parseLimit(value) {
   if (!Number.isFinite(value)) return null;
-  return Math.max(1, Math.min(999, Math.round(value)));
+  return Math.max(1, Math.min(LIMIT_MAX, Math.round(value)));
 }
 
 async function updateAppLimit(userId, app, limit) {
@@ -230,8 +268,9 @@ async function updateAppLimit(userId, app, limit) {
   return saveRuntimeState(userId, state);
 }
 
-async function consumeOneView(userId, app) {
+async function consumeOneView(userId, app, options = {}) {
   if (!APPS.includes(app)) throw new Error("Invalid app");
+  const premiumActive = Boolean(options.premiumActive);
   let state = await getOrCreateRuntimeState(userId);
   state = resetIfNewDay(state);
 
@@ -242,20 +281,23 @@ async function consumeOneView(userId, app) {
   if (remainingByLimit <= 0) {
     return { state, consumed: false, reason: "limit_reached" };
   }
-  if (!canConsumeVideo(state, app)) {
-    return { state, consumed: false, reason: "credits_exhausted" };
+  let nextState = state;
+  if (!premiumActive) {
+    if (!canConsumeVideo(state, app)) {
+      return { state, consumed: false, reason: "credits_exhausted" };
+    }
+    const creditResult = consumeCredit(state, app);
+    if (!creditResult.consumed) {
+      return { state, consumed: false, reason: "credits_exhausted" };
+    }
+    nextState = creditResult.state;
   }
 
-  const creditResult = consumeCredit(state, app);
-  if (!creditResult.consumed) {
-    return { state, consumed: false, reason: "credits_exhausted" };
-  }
-
-  const nextState = {
-    ...creditResult.state,
-    views: { ...creditResult.state.views, [app]: creditResult.state.views[app] + 1 },
+  const withView = {
+    ...nextState,
+    views: { ...nextState.views, [app]: nextState.views[app] + 1 },
   };
-  const saved = await saveRuntimeState(userId, nextState);
+  const saved = await saveRuntimeState(userId, withView);
   return { state: saved, consumed: true, reason: null };
 }
 

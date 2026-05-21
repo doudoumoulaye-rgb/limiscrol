@@ -1,11 +1,12 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { loadAppPublicConfig } = require("./scripts/load-app-public-config");
+const { loadSubscriptionsConfig } = require("./scripts/load-subscriptions-config");
 
 const projectRoot = __dirname;
 const distDir = path.join(projectRoot, "dist");
 
-function injectAppPublicConfig(html, cfg) {
+function injectAppPublicConfig(html, cfg, subsCfg) {
   let out = html;
   out = out.replace(
     /const RELEASE_API_BASE = "";/,
@@ -19,6 +20,18 @@ function injectAppPublicConfig(html, cfg) {
     /const SUPABASE_DEFAULT_ANON_KEY = "";/,
     `const SUPABASE_DEFAULT_ANON_KEY = ${JSON.stringify(cfg.supabaseAnonKey)};`
   );
+  if (subsCfg?.androidApiKey) {
+    out = out.replace(
+      /let RC_API_KEY_ANDROID_PUBLISHED = "";/,
+      `let RC_API_KEY_ANDROID_PUBLISHED = ${JSON.stringify(subsCfg.androidApiKey)};`
+    );
+  }
+  if (subsCfg?.iosApiKey) {
+    out = out.replace(
+      /let RC_API_KEY_IOS_PUBLISHED = "";/,
+      `let RC_API_KEY_IOS_PUBLISHED = ${JSON.stringify(subsCfg.iosApiKey)};`
+    );
+  }
   return out;
 }
 
@@ -28,7 +41,10 @@ if (fs.existsSync(distDir)) {
 fs.mkdirSync(distDir, { recursive: true });
 
 const appCfg = loadAppPublicConfig(projectRoot);
+const subsCfg = loadSubscriptionsConfig(projectRoot);
 const filesToCopy = ["index.html", "styles.css", "script.js"];
+const i18nSrc = path.join(projectRoot, "i18n");
+const i18nDest = path.join(distDir, "i18n");
 const configDir = path.join(projectRoot, "config");
 const configDest = path.join(distDir, "config");
 
@@ -37,7 +53,7 @@ for (const filename of filesToCopy) {
   const dest = path.join(distDir, filename);
   if (filename === "index.html") {
     const html = fs.readFileSync(src, "utf8");
-    fs.writeFileSync(dest, injectAppPublicConfig(html, appCfg), "utf8");
+    fs.writeFileSync(dest, injectAppPublicConfig(html, appCfg, subsCfg), "utf8");
   } else {
     fs.copyFileSync(src, dest);
   }
@@ -47,6 +63,16 @@ const assetsSrc = path.join(projectRoot, "assets");
 const assetsDest = path.join(distDir, "assets");
 if (fs.existsSync(assetsSrc)) {
   fs.cpSync(assetsSrc, assetsDest, { recursive: true });
+}
+
+if (fs.existsSync(i18nSrc)) {
+  fs.cpSync(i18nSrc, i18nDest, { recursive: true });
+}
+
+const capacitorSrc = path.join(projectRoot, "capacitor.config.json");
+const capacitorDest = path.join(distDir, "capacitor.config.json");
+if (fs.existsSync(capacitorSrc)) {
+  fs.copyFileSync(capacitorSrc, capacitorDest);
 }
 
 if (fs.existsSync(configDir)) {
@@ -75,5 +101,10 @@ if (!hasProdApi) {
 if (!hasSupabase) {
   console.log(
     "[build] Supabase URL/anon key not set — auth cloud disabled until config/app.public.json is filled."
+  );
+}
+if (!subsCfg.androidApiKey && !subsCfg.iosApiKey) {
+  console.log(
+    "[build] RevenueCat keys missing — set androidApiKey in config/subscriptions.json for store payments."
   );
 }

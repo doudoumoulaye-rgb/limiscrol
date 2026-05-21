@@ -415,7 +415,7 @@ function updateUI() {
   }
 
   if (state.subscription.monthlyActive) {
-    trialStatus.textContent = "Plan mensuel actif (5 CHF / mois).";
+    trialStatus.textContent = "Plan mensuel actif (3 CHF / mois).";
     subscribeMonthlyBtn.disabled = true;
   } else if (trialDays > 0) {
     trialStatus.textContent = `Essai gratuit actif: ${trialDays} jours restants.`;
@@ -545,7 +545,7 @@ function renderProfile() {
     ? new Date(state.account.createdAt).toLocaleDateString("fr-FR")
     : "-";
   profileTrialLeft.textContent = `${getTrialRemainingDays()} jour(s)`;
-  profilePlan.textContent = state.subscription.monthlyActive ? "Mensuel 5 CHF/mois" : "Essai gratuit";
+  profilePlan.textContent = state.subscription.monthlyActive ? "Mensuel 3 CHF/mois" : "Essai gratuit";
 
   const streak = getCurrentStreak();
   const toRatioDone = (valueText) => {
@@ -909,7 +909,7 @@ function goToLogos() {
 
 function openHistory() {
   if (!hasPremiumAccess()) {
-    alert("Fonction premium: active le plan mensuel 5 CHF/mois.");
+    alert("Fonction premium: active le plan mensuel 3 CHF/mois.");
     return;
   }
   selectHistoryApp(selectedApp);
